@@ -31,5 +31,10 @@
             android:label="places activity">
         </activity>
 
+        <activity
+            android:name=".MapActivity"
+            android:label="map activity">
+        </activity>
+
     </application>
 </manifest>
