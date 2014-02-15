@@ -4,13 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -35,15 +36,18 @@ public class MapActivity extends Activity {
         final Location tr = Utils.makeLocation(-2.31754, 51.38239);
 
         setContentView(R.layout.map);
-        ImageView iv = (ImageView) findViewById(R.id.map_view);
+        final ImageView iv = (ImageView) findViewById(R.id.map_view);
+        final Display d = getWindowManager().getDefaultDisplay();
 
-        if (Utils.containsLocation(Utils.makeLocation(1d, 1d), bl, tr)) {
-            this.m = new Map(getResources().getDrawable(R.drawable.map), bl, tr);
-        } else {
-            this.m = new Map(getResources().getDrawable(R.drawable.no_map), bl, tr);
-        }
+        final Resources r = getResources();
 
-        iv.setImageDrawable(this.m.getDrawableMap());
+        this.m = new Map(r, bl, tr, d, R.drawable.map, R.drawable.no_map);
+
+        /* Some dummy locations */
+        final Location stv = Utils.makeLocation(-2.32446, 51.37756);
+        final Location lib = Utils.makeLocation(-2.32798, 51.37989);
+
+        iv.setImageBitmap(this.m.getBitmap(stv));
         Log.v("MapActivity", "Started MapActivity!");
     }
 }
