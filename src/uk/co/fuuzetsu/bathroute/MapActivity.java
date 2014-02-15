@@ -34,11 +34,16 @@ public class MapActivity extends Activity {
         final Location bl = Utils.makeLocation(-2.33556, 51.37515);
         final Location tr = Utils.makeLocation(-2.31754, 51.38239);
 
-        this.m = new Map(getResources().getDrawable(R.drawable.map), bl, tr);
-
         setContentView(R.layout.map);
         ImageView iv = (ImageView) findViewById(R.id.map_view);
-        Log.v("MapActivity", "Started MapActivity!");
+
+        if (Utils.containsLocation(Utils.makeLocation(1d, 1d), bl, tr)) {
+            this.m = new Map(getResources().getDrawable(R.drawable.map), bl, tr);
+        } else {
+            this.m = new Map(getResources().getDrawable(R.drawable.no_map), bl, tr);
+        }
+
         iv.setImageDrawable(this.m.getDrawableMap());
+        Log.v("MapActivity", "Started MapActivity!");
     }
 }

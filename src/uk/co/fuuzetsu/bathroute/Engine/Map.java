@@ -3,6 +3,8 @@ package uk.co.fuuzetsu.bathroute.engine;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 
+import uk.co.fuuzetsu.bathroute.engine.Utils;
+
 public class Map {
 
     private Drawable drawable;
@@ -20,5 +22,9 @@ public class Map {
 
     public Drawable getDrawableMap(final Location l) {
         return this.drawable;
+    }
+
+    public Boolean containsLocation(final Location l) {
+        return Utils.containsLocation(l, this.bl, this.tr);
     }
 }

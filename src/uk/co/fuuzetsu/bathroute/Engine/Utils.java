@@ -13,4 +13,12 @@ public class Utils {
         l.setLatitude(latitude);
         return l;
     }
+
+    public static Boolean containsLocation(final Location l, final Location bl,
+                                           final Location tr) {
+        Double lg = l.getLongitude();
+        Double lt = l.getLatitude();
+        return lg <= bl.getLongitude() && lg >= tr.getLongitude()
+            && lt >= bl.getLatitude() && lt <= bl.getLatitude();
+    }
 }
