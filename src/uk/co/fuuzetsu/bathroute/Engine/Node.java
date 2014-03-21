@@ -3,6 +3,7 @@ package uk.co.fuuzetsu.bathroute.engine;
 import android.location.Location;
 import java.util.List;
 import uk.co.fuuzetsu.bathroute.engine.Pair;
+import fj.data.Option;
 
 public class Node {
     private final Integer id;
@@ -11,18 +12,10 @@ public class Node {
     /* Double is for cost */
     private final List<Integer> neighbours;
 
-    private final String name;
+    private final Option<String> name;
 
     public Node(final Integer id, final Location loc,
-                final List<Integer> n) {
-        this.id = id;
-        this.loc = loc;
-        this.neighbours = n;
-        this.name = "";
-    }
-
-    public Node(final Integer id, final Location loc,
-                final List<Integer> n, final String name) {
+                final List<Integer> n, final Option<String> name) {
         this.id = id;
         this.loc = loc;
         this.neighbours = n;
