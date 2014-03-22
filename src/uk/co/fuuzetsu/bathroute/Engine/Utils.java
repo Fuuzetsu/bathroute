@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
+import fj.data.Option;
 
 public class Utils {
 
@@ -64,6 +65,20 @@ public class Utils {
         }
 
         return inSampleSize;
+    }
+
+    public static <A> String optP(Option<A> x) {
+        if (x == null) {
+            return "null";
+        } else if (x.isSome()) {
+            if (x.some() == null) {
+                return "Just null";
+            } else {
+                return "Just (" + x.some().toString() + ")";
+            }
+        } else {
+            return "Nothing";
+        }
     }
 
 }
