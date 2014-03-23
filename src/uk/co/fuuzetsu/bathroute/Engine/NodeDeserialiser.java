@@ -187,7 +187,7 @@ public class NodeDeserialiser {
         sp.removeAll(Arrays.asList(""));
         List<Integer> il = new ArrayList<>();
         for (String ss : sp) {
-            Option<Integer> r = parseId(s);
+            Option<Integer> r = parseId(ss);
             if (r.isSome()) {
                 il.add(r.some());
             }
