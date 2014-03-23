@@ -1,28 +1,35 @@
 package uk.co.fuuzetsu.bathroute;
 
-import android.app.Activity;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.app.TabActivity;
-import android.content.Intent;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.util.Log;
-import android.widget.TextView;
-
-import android.view.View;
-import android.view.ViewGroup;
-
-
-import android.support.v4.view.ViewPager;
 import android.support.v4.app.Fragment;
-// import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-
-
+import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.List;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+import uk.co.fuuzetsu.bathroute.engine.Node;
+import uk.co.fuuzetsu.bathroute.engine.NodeDeserialiser;
 
 public class MainActivity
     extends FragmentActivity
@@ -87,6 +94,19 @@ public class MainActivity
                 public void onPageScrollStateChanged(int arg0) {
                 }
             });
+        Log.v("Main", "deserialising");
+        NodeDeserialiser nd = new NodeDeserialiser();
+        Resources res = getResources();
+
+        try {
+            String nodeText = IOUtils.toString(res.openRawResource(R.raw.nodes));
+            List<Node> nodes = nd.deserialise(nodeText);
+            Log.v("Main", "Done deseralising");
+            Log.v("Main", nodes.toString());
+        } catch (IOException|XmlPullParserException e) {
+            Log.v("Main", "Deserialising failed");
+            Log.v("Main", ExceptionUtils.getStackTrace(e));
+        }
     }
 
     private class TabsPagerAdapter extends FragmentPagerAdapter {

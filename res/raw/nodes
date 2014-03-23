@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodes>
+  <node>
+    <id>1</id>
+    <name>Sports Training Vilage</name>
+    <latitude>51.37750</latitude>
+    <longitude>-2.32516</longitude>
+    <neighbours>2</neighbours>
+  </node>
+  <node>
+    <id>2</id>
+    <name>Arts Lecture Theatre</name>
+    <latitude>51.37838</latitude>
+    <longitude>-2.32496</longitude>
+    <neighbours>1 3</neighbours>
+  </node>
+  <node>
+    <id>3</id>
+    <latitude>51.37864</latitude>
+    <longitude>-2.32490</longitude>
+    <neighbours>2 4</neighbours>
+  </node>
+  <node>
+    <id>4</id>
+    <name>Bus stop</name>
+    <latitude>51.37888</latitude>
+    <longitude>-2.32541</longitude>
+    <neighbours>3</neighbours>
+  </node>
+  <node>
+    <id>4</id>
+    <name>Bus stop</name>
+    <latitude>51.37888</latitude>
+    <longitude>-2.32541</longitude>
+    <neighbours>3 5</neighbours>
+  </node>
+  <node>
+    <id>5</id>
+    <latitude>51.37917</latitude>
+    <longitude>-2.32566</longitude>
+    <neighbours>4 6 12</neighbours>
+  </node>
+  <node>
+    <id>6</id>
+    <name>6E</name>
+    <latitude>51.37926</latitude>
+    <longitude>-2.32605</longitude>
+    <neighbours>5 7</neighbours>
+  </node>
+  <node>
+    <id>7</id>
+    <latitude>51.37938</latitude>
+    <longitude>-2.32664</longitude>
+    <neighbours>6 8</neighbours>
+  </node>
+  <node>
+    <id>8</id>
+    <name>The Plug and Students Union</name>
+    <latitude>51.37952</latitude>
+    <longitude>-2.32684</longitude>
+    <neighbours>7 9</neighbours>
+  </node>
+  <node>
+    <id>9</id>
+    <name>4E</name>
+    <latitude>51.37940</latitude>
+    <longitude>-2.32689</longitude>
+    <neighbours>7 8</neighbours>
+  </node>
+  <node>
+    <id>10</id>
+    <name>2E</name>
+    <latitude>51.37946</latitude>
+    <longitude>-2.32751</longitude>
+    <neighbours>9 11</neighbours>
+  </node>
+  <node>
+    <id>11</id>
+    <name>Library</name>
+    <latitude>51.37965</latitude>
+    <longitude>-2.32806</longitude>
+    <neighbours>10</neighbours>
+  </node>
+  <node>
+    <id>12</id>
+    <name>CB</name>
+    <latitude>51.38010</latitude>
+    <longitude>-2.32572</longitude>
+    <neighbours>5</neighbours>
+  </node>
+</nodes>
