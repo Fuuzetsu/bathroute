@@ -38,7 +38,7 @@ public class Node {
     @Override
     public String toString() {
     return
-        "Incomplete Node id " + id.toString() + "\n" +
+        "Node id " + id.toString() + "\n" +
         "Name: " + Utils.optP(name) + "\n" +
         "Location: " + loc.toString() + "\n" +
         "Neighbours: " + neighbours.toString() + "\n";
