@@ -60,7 +60,7 @@ public class NodeDeserialiserTests extends TestCase {
     }
 
     public void testIntList() {
-        List<Integer> r = new ArrayList();
+        List<Integer> r = new ArrayList<>();
         r.add(1); r.add(2); r.add(3); r.add(4);
         String input = "1 2 3 4";
 
