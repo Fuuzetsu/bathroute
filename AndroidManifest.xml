@@ -36,5 +36,13 @@
             android:label="map activity">
         </activity>
 
+        <uses-library
+            android:name="android.test.runner" />
     </application>
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="uk.co.fuuzetsu.bathroute"
+        android:label="Tests for uk.co.fuuzetsu.bathroute" />
+
 </manifest>
