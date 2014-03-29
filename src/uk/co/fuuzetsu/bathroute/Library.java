@@ -14,61 +14,61 @@ import android.graphics.Color;
 
 public class Library extends Activity {
 
-	// 51.379932,-2.327943
-	private MapView mapView;
-	public double centerLat = 51.379932;
-	public double centerLong = -2.327943;
+        // 51.379932,-2.327943
+        private MapView mapView;
+        public double centerLat = 51.379932;
+        public double centerLong = -2.327943;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
 
-		super.onCreate(savedInstanceState);
+                super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_main);
+                setContentView(R.layout.activity_main);
 
-		mapView = (MapView) this.findViewById(R.id.mapview);
+                mapView = (MapView) this.findViewById(R.id.mapview);
 
-		mapView.setUseDataConnection(true);
-		// mapView.setTileSource(TileSourceFactory.MAPQUESTOSM);
-		//
-		mapView.setMaxZoomLevel(19);
-		mapView.setBuiltInZoomControls(true);
+                mapView.setUseDataConnection(true);
+                // mapView.setTileSource(TileSourceFactory.MAPQUESTOSM);
+                //
+                mapView.setMaxZoomLevel(19);
+                mapView.setBuiltInZoomControls(true);
 
-		mapView.setMultiTouchControls(true);
-		mapView.getController().setZoom(17);
+                mapView.setMultiTouchControls(true);
+                mapView.getController().setZoom(17);
 
-		// mapView.getController().setZoom(17);
+                // mapView.getController().setZoom(17);
 
-		// setting the central coordinates as per attribute value
-		mapView.getController().setCenter(new GeoPoint(centerLat, centerLong));
+                // setting the central coordinates as per attribute value
+                mapView.getController().setCenter(new GeoPoint(centerLat, centerLong));
 
-		// show pathOverlay
-		PathOverlay pathOverlay = new PathOverlay(Color.RED, this);
+                // show pathOverlay
+                PathOverlay pathOverlay = new PathOverlay(Color.RED, this);
 
-		// adding start point ---------------------------------------------- 1
+                // adding start point ---------------------------------------------- 1
 
-		// start point is Library
-		pathOverlay.addPoint(new GeoPoint(centerLat, centerLong));
+                // start point is Library
+                pathOverlay.addPoint(new GeoPoint(centerLat, centerLong));
 
-		// setting the stroke width
+                // setting the stroke width
 
-		pathOverlay.getPaint().setStrokeWidth(3.0f);
+                pathOverlay.getPaint().setStrokeWidth(3.0f);
 
-		ArrayList<OverlayItem> overlayItemArray = new ArrayList<OverlayItem>();
-		OverlayItem olItem = new OverlayItem("Open 24 hrs", "Library",
-				new GeoPoint(centerLat, centerLong));
+                ArrayList<OverlayItem> overlayItemArray = new ArrayList<OverlayItem>();
+                OverlayItem olItem = new OverlayItem("Open 24 hrs", "Library",
+                                new GeoPoint(centerLat, centerLong));
 
-		overlayItemArray.add(olItem);
+                overlayItemArray.add(olItem);
 
-		MyOwnItemizedOverlay overlay = new MyOwnItemizedOverlay(this,
-				overlayItemArray);
-		// adding the overlay thus calling paint
+                MyOwnItemizedOverlay overlay = new MyOwnItemizedOverlay(this,
+                                overlayItemArray);
+                // adding the overlay thus calling paint
 
-		mapView.getOverlays().add(pathOverlay);
-		mapView.getOverlays().add(overlay);
-		// refresh map, is this needed?
-		mapView.invalidate();
+                mapView.getOverlays().add(pathOverlay);
+                mapView.getOverlays().add(overlay);
+                // refresh map, is this needed?
+                mapView.invalidate();
 
-	}
+        }
 
 }

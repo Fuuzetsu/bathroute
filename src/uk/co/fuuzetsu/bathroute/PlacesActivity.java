@@ -40,37 +40,37 @@ public class PlacesActivity extends Fragment {
                 public void onItemClick(AdapterView<?> parent, View view,
                                         int pos, long id) {
                     if (pos == 4) {
-                    	  
-                    	
-                          
+
+
+
                         Intent i = new Intent(rootView.getContext(),
                                              MapActivity.class);
-                        
+
                        startActivity(i);
                     } else if(pos == 3)
                     {
-                    	  
+
                         Intent i = new Intent(rootView.getContext(),
                                              EastBuilding.class);
-                        
+
                        startActivity(i);
-                    } 
+                    }
                     else if(pos == 2)
                     {
-                    	  
+
                         Intent i = new Intent(rootView.getContext(),
                                              ThreeEast.class);
-                        
+
                        startActivity(i);
-                    } 
+                    }
                     else if(pos == 1)
                     {
-                    	  
+
                         Intent i = new Intent(rootView.getContext(),
                                              Library.class);
-                        
+
                        startActivity(i);
-                    } 
+                    }
                     else {
                         Log.v("PlacesActivity",
                               String.format("Clicked on pos %d", pos));

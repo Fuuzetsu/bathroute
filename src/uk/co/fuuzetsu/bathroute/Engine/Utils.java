@@ -27,7 +27,7 @@ public class Utils {
     }
 
 
-    /* We 鈥榖orrow鈥�next two methods from the android developer pages */
+    /* We ‘borrow’ next two methods from the android developer pages */
     public static Bitmap decodeSampledBitmapFromResource
         (Resources res, int resId, int reqWidth, int reqHeight) {
 

@@ -25,61 +25,61 @@ public class MapActivity extends Activity {
 
  protected void onCreate(Bundle savedInstanceState) {
 
-	super.onCreate(savedInstanceState);
-
-	
-
-	setContentView(R.layout.activity_main);
-	mapView=(MapView) this.findViewById(R.id.mapview);
-
-   
-	mapView.setBuiltInZoomControls(true);
-
-	mapView.setMultiTouchControls(true);
-
-	mapView.setMaxZoomLevel(19);
-
-	mapView.getController().setZoom(17);
+        super.onCreate(savedInstanceState);
 
 
-	//setting the central coordinates as per attribute value
-	mapView.getController().setCenter(new GeoPoint(centerLat,centerLong));
 
-	// show pathOverlay
-	PathOverlay pathOverlay = new PathOverlay(Color.RED, this);
+        setContentView(R.layout.activity_main);
+        mapView=(MapView) this.findViewById(R.id.mapview);
 
-	//adding start point ---------------------------------------------- 1
 
-	//start point is Library
-	pathOverlay.addPoint(new GeoPoint(centerLat,centerLong));
+        mapView.setBuiltInZoomControls(true);
 
-	// ----------------------------------------------------------------- 2
+        mapView.setMultiTouchControls(true);
 
-	//research and development center claverton rooms
-	pathOverlay.addPoint(new GeoPoint(51.379509,-2.328469));
+        mapView.setMaxZoomLevel(19);
 
-	// ----------------------------------------------------------------- 3
-	//student center
-	pathOverlay.addPoint(new GeoPoint(51.379462,-2.326508));
+        mapView.getController().setZoom(17);
 
-	//setting the stroke width
 
-	pathOverlay.getPaint().setStrokeWidth(3.0f);
+        //setting the central coordinates as per attribute value
+        mapView.getController().setCenter(new GeoPoint(centerLat,centerLong));
 
-	ArrayList<OverlayItem> overlayItemArray = new ArrayList<OverlayItem>();                
-	OverlayItem olItem = new OverlayItem("Here", "FoundersHall", new GeoPoint(51.379462, -2.326508));
-	OverlayItem olItem2 = new OverlayItem("Here", "Library", new GeoPoint(centerLat,centerLong));
-	OverlayItem olItem3 = new OverlayItem("Here", "Claverton Rooms", new GeoPoint(51.379509,-2.328469));//marker
-	overlayItemArray.add(olItem);
-	overlayItemArray.add(olItem2);
-	overlayItemArray.add(olItem3);
-	MyOwnItemizedOverlay overlay = new MyOwnItemizedOverlay(this, overlayItemArray);
-	//adding the overlay thus calling paint 
+        // show pathOverlay
+        PathOverlay pathOverlay = new PathOverlay(Color.RED, this);
 
-	mapView.getOverlays().add(pathOverlay);
+        //adding start point ---------------------------------------------- 1
+
+        //start point is Library
+        pathOverlay.addPoint(new GeoPoint(centerLat,centerLong));
+
+        // ----------------------------------------------------------------- 2
+
+        //research and development center claverton rooms
+        pathOverlay.addPoint(new GeoPoint(51.379509,-2.328469));
+
+        // ----------------------------------------------------------------- 3
+        //student center
+        pathOverlay.addPoint(new GeoPoint(51.379462,-2.326508));
+
+        //setting the stroke width
+
+        pathOverlay.getPaint().setStrokeWidth(3.0f);
+
+        ArrayList<OverlayItem> overlayItemArray = new ArrayList<OverlayItem>();
+        OverlayItem olItem = new OverlayItem("Here", "FoundersHall", new GeoPoint(51.379462, -2.326508));
+        OverlayItem olItem2 = new OverlayItem("Here", "Library", new GeoPoint(centerLat,centerLong));
+        OverlayItem olItem3 = new OverlayItem("Here", "Claverton Rooms", new GeoPoint(51.379509,-2.328469));//marker
+        overlayItemArray.add(olItem);
+        overlayItemArray.add(olItem2);
+        overlayItemArray.add(olItem3);
+        MyOwnItemizedOverlay overlay = new MyOwnItemizedOverlay(this, overlayItemArray);
+        //adding the overlay thus calling paint
+
+        mapView.getOverlays().add(pathOverlay);
     mapView.getOverlays().add(overlay);
-	// refresh map, is this needed?
-	mapView.invalidate();
+        // refresh map, is this needed?
+        mapView.invalidate();
 
 
 

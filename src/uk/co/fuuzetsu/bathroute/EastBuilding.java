@@ -27,51 +27,51 @@ public class EastBuilding extends Activity {
 
  protected void onCreate(Bundle savedInstanceState) {
 
-	super.onCreate(savedInstanceState);
-
-	
-
-	setContentView(R.layout.activity_main);
-	mapView=(MapView) this.findViewById(R.id.mapview);
-
-   
-	mapView.setBuiltInZoomControls(true);
-
-	mapView.setMultiTouchControls(true);
-
-	mapView.setMaxZoomLevel(19);
-
-	mapView.getController().setZoom(17);
+        super.onCreate(savedInstanceState);
 
 
-	//setting the central coordinates as per attribute value
-	mapView.getController().setCenter(new GeoPoint(centerLat,centerLong));
 
-	// show pathOverlay
-	PathOverlay pathOverlay = new PathOverlay(Color.RED, this);
-
-	//adding start point ---------------------------------------------- 1
-
-	//start point is Library
-	pathOverlay.addPoint(new GeoPoint(centerLat,centerLong));
+        setContentView(R.layout.activity_main);
+        mapView=(MapView) this.findViewById(R.id.mapview);
 
 
-	//setting the stroke width
+        mapView.setBuiltInZoomControls(true);
 
-	pathOverlay.getPaint().setStrokeWidth(3.0f);
+        mapView.setMultiTouchControls(true);
 
-	ArrayList<OverlayItem> overlayItemArray = new ArrayList<OverlayItem>();                
-	OverlayItem olItem = new OverlayItem("Mon-Sat 8AM - 12AM", "East Building", new GeoPoint(centerLat,centerLong));
-	
-	overlayItemArray.add(olItem);
-	
-	MyOwnItemizedOverlay overlay = new MyOwnItemizedOverlay(this, overlayItemArray);
-	//adding the overlay thus calling paint 
+        mapView.setMaxZoomLevel(19);
 
-	mapView.getOverlays().add(pathOverlay);
+        mapView.getController().setZoom(17);
+
+
+        //setting the central coordinates as per attribute value
+        mapView.getController().setCenter(new GeoPoint(centerLat,centerLong));
+
+        // show pathOverlay
+        PathOverlay pathOverlay = new PathOverlay(Color.RED, this);
+
+        //adding start point ---------------------------------------------- 1
+
+        //start point is Library
+        pathOverlay.addPoint(new GeoPoint(centerLat,centerLong));
+
+
+        //setting the stroke width
+
+        pathOverlay.getPaint().setStrokeWidth(3.0f);
+
+        ArrayList<OverlayItem> overlayItemArray = new ArrayList<OverlayItem>();
+        OverlayItem olItem = new OverlayItem("Mon-Sat 8AM - 12AM", "East Building", new GeoPoint(centerLat,centerLong));
+
+        overlayItemArray.add(olItem);
+
+        MyOwnItemizedOverlay overlay = new MyOwnItemizedOverlay(this, overlayItemArray);
+        //adding the overlay thus calling paint
+
+        mapView.getOverlays().add(pathOverlay);
     mapView.getOverlays().add(overlay);
-	// refresh map, is this needed?
-	mapView.invalidate();
+        // refresh map, is this needed?
+        mapView.invalidate();
 
 
 
