@@ -1,4 +1,4 @@
-package uk.co.fuuzetsu.bathroute.engine;
+package uk.co.fuuzetsu.bathroute.Engine;
 
 public class Pair<A, B> {
     private A x;
@@ -32,7 +32,8 @@ public class Pair<A, B> {
         return false;
     }
 
-    public String toString()
+    @Override
+	public String toString()
     {
         return "(" + x + ", " + y + ")";
     }

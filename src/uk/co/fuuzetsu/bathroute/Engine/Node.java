@@ -1,9 +1,8 @@
-package uk.co.fuuzetsu.bathroute.engine;
+package uk.co.fuuzetsu.bathroute.Engine;
 
 import android.location.Location;
 import java.util.List;
-import uk.co.fuuzetsu.bathroute.engine.Pair;
-import uk.co.fuuzetsu.bathroute.engine.Utils;
+import uk.co.fuuzetsu.bathroute.Engine.Utils;
 import fj.data.Option;
 
 public class Node {

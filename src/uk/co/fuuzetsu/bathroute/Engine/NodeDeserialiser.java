@@ -1,7 +1,6 @@
-package uk.co.fuuzetsu.bathroute.engine;
+package uk.co.fuuzetsu.bathroute.Engine;
 
 import android.location.Location;
-import android.util.Log;
 import fj.F2;
 import fj.F;
 import fj.Unit;
@@ -14,8 +13,7 @@ import java.util.List;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
-import uk.co.fuuzetsu.bathroute.engine.Node;
-import uk.co.fuuzetsu.bathroute.engine.Pair;
+import uk.co.fuuzetsu.bathroute.Engine.Node;
 
 public class NodeDeserialiser {
 
@@ -39,7 +37,7 @@ public class NodeDeserialiser {
         p.setInput(new StringReader (s));
         int eventType = p.getEventType();
 
-        List<Node> nodes = new ArrayList<>();
+        List<Node> nodes = new ArrayList<Node>();
         Option<IncompleteNode> currentNode = Option.none();
         Option<F2<IncompleteNode, String, Unit>> pf = Option.none();
         String observedTag = "";
@@ -60,8 +58,7 @@ public class NodeDeserialiser {
                             return Unit.unit();
                         }
                     };
-                    switch (observedTag) {
-                    case "id":
+                    if ("id".equals(observedTag)) {
                         pg = new F2<IncompleteNode, String, Unit>() {
 
                             @Override
@@ -71,8 +68,7 @@ public class NodeDeserialiser {
                             }
                         };
                         pf = Option.some(pg);
-                        break;
-                    case "latitude":
+                    } else if ("latitude".equals(observedTag)) {
                         pg = new F2<IncompleteNode, String, Unit>() {
 
                             @Override
@@ -82,8 +78,7 @@ public class NodeDeserialiser {
                             }
                         };
                         pf = Option.some(pg);
-                        break;
-                    case "longitude":
+                    } else if ("longitude".equals(observedTag)) {
                         pg = new F2<IncompleteNode, String, Unit>() {
 
                             @Override
@@ -93,8 +88,7 @@ public class NodeDeserialiser {
                             }
                         };
                         pf = Option.some(pg);
-                        break;
-                    case "neighbours":
+                    } else if ("neighbours".equals(observedTag)) {
                         pg = new F2<IncompleteNode, String, Unit>() {
 
                             @Override
@@ -104,8 +98,7 @@ public class NodeDeserialiser {
                             }
                         };
                         pf = Option.some(pg);
-                        break;
-                    case "name":
+                    } else if ("name".equals(observedTag)) {
                         pg = new F2<IncompleteNode, String, Unit>() {
 
                             @Override
@@ -115,8 +108,7 @@ public class NodeDeserialiser {
                             }
                         };
                         pf = Option.some(pg);
-                        break;
-                    default:
+                    } else {
                         pf = Option.none();
                     }
                 }
@@ -185,7 +177,7 @@ public class NodeDeserialiser {
     private List<Integer> parseIntList(String s) {
         List<String> sp = Arrays.asList(s.split("\\s+"));
         sp.removeAll(Arrays.asList(""));
-        List<Integer> il = new ArrayList<>();
+        List<Integer> il = new ArrayList<Integer>();
         for (String ss : sp) {
             Option<Integer> r = parseId(ss);
             if (r.isSome()) {

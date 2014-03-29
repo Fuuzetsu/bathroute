@@ -1,15 +1,12 @@
-package uk.co.fuuzetsu.bathroute.engine;
+package uk.co.fuuzetsu.bathroute.Engine;
 
 import android.graphics.Bitmap;
 import android.graphics.Point;
-import android.graphics.drawable.Drawable;
 import android.content.res.Resources;
 import android.location.Location;
 import android.view.Display;
 
-import java.lang.Math;
-
-import uk.co.fuuzetsu.bathroute.engine.Utils;
+import uk.co.fuuzetsu.bathroute.Engine.Utils;
 
 public class Map {
 

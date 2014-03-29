@@ -1,2 +1,6 @@
 bin/
-gen/
+gen
+.classpath
+.project
+lint.xml
+.settings/

@@ -1,40 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="uk.co.fuuzetsu.bathroute"
-      android:versionCode="1"
-      android:versionName="1.0">
-  <uses-sdk
-      android:minSdkVersion="19"
-      android:targetSdkVersion="19" />
+    package="uk.co.fuuzetsu.bathroute"
+    android:versionCode="1"
+    android:versionName="1.0" >
 
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" >:
-        <activity android:name="MainActivity"
-                  android:label="@string/app_name">
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="17" />
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.location.network" />
+    <uses-feature android:name="android.hardware.location.gps" />
+    <uses-feature android:name="android.hardware.wifi" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <activity
+            android:name="MainActivity"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="settings activity">
+            android:label="settings activity" >
         </activity>
-
         <activity
             android:name=".MiscActivity"
-            android:label="misc activity">
+            android:label="misc activity" >
         </activity>
-
         <activity
             android:name=".PlacesActivity"
-            android:label="places activity">
+            android:label="places activity" >
         </activity>
-
+        <activity
+            android:name=".EastBuilding"
+            android:label="EB" >
+        </activity>
+        <activity
+            android:name=".ThreeEast"
+            android:label="ThreeE" >
+        </activity>
+        <activity
+            android:name=".Library"
+            android:label="Lib" >
+        </activity>
         <activity
             android:name=".MapActivity"
-            android:label="map activity">
+            android:label="map activity" >
         </activity>
-
     </application>
+
 </manifest>

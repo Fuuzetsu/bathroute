@@ -1,4 +1,4 @@
-package uk.co.fuuzetsu.bathroute.engine;
+package uk.co.fuuzetsu.bathroute.Engine;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -27,7 +27,7 @@ public class Utils {
     }
 
 
-    /* We ‘borrow’ next two methods from the android developer pages */
+    /* We 鈥榖orrow鈥�next two methods from the android developer pages */
     public static Bitmap decodeSampledBitmapFromResource
         (Resources res, int resId, int reqWidth, int reqHeight) {
 

@@ -1,5 +1,7 @@
 package uk.co.fuuzetsu.bathroute;
 
+
+
 import java.util.ArrayList;
 
 import org.osmdroid.util.GeoPoint;
@@ -11,13 +13,13 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Color;
 
-public class MapActivity extends Activity {
+public class EastBuilding extends Activity {
 
 
-
+//51.37876/-2.32309
    private MapView mapView;
-   public double centerLat = 51.379932;
-   public double centerLong = -2.327943;
+   public double centerLat = 51.378766;
+   public double centerLong = -2.323099;
 
 
 
@@ -53,26 +55,16 @@ public class MapActivity extends Activity {
 	//start point is Library
 	pathOverlay.addPoint(new GeoPoint(centerLat,centerLong));
 
-	// ----------------------------------------------------------------- 2
-
-	//research and development center claverton rooms
-	pathOverlay.addPoint(new GeoPoint(51.379509,-2.328469));
-
-	// ----------------------------------------------------------------- 3
-	//student center
-	pathOverlay.addPoint(new GeoPoint(51.379462,-2.326508));
 
 	//setting the stroke width
 
 	pathOverlay.getPaint().setStrokeWidth(3.0f);
 
 	ArrayList<OverlayItem> overlayItemArray = new ArrayList<OverlayItem>();                
-	OverlayItem olItem = new OverlayItem("Here", "FoundersHall", new GeoPoint(51.379462, -2.326508));
-	OverlayItem olItem2 = new OverlayItem("Here", "Library", new GeoPoint(centerLat,centerLong));
-	OverlayItem olItem3 = new OverlayItem("Here", "Claverton Rooms", new GeoPoint(51.379509,-2.328469));//marker
+	OverlayItem olItem = new OverlayItem("Mon-Sat 8AM - 12AM", "East Building", new GeoPoint(centerLat,centerLong));
+	
 	overlayItemArray.add(olItem);
-	overlayItemArray.add(olItem2);
-	overlayItemArray.add(olItem3);
+	
 	MyOwnItemizedOverlay overlay = new MyOwnItemizedOverlay(this, overlayItemArray);
 	//adding the overlay thus calling paint 
 
