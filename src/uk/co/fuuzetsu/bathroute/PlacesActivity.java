@@ -44,7 +44,7 @@ public class PlacesActivity extends Fragment {
 
 
                         Intent i = new Intent(rootView.getContext(),
-                                             MapActivity.class);
+                                             CurrentLocation.class);
 
                        startActivity(i);
                     } else if(pos == 3)

@@ -56,8 +56,8 @@
             android:label="Lib" >
         </activity>
         <activity
-            android:name=".MapActivity"
-            android:label="map activity" >
+            android:name=".CurrentLocation"
+            android:label="Current Location" >
         </activity>
     </application>
 
