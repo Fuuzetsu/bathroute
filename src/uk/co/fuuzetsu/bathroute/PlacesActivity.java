@@ -44,31 +44,44 @@ public class PlacesActivity extends Fragment {
 
 
                         Intent i = new Intent(rootView.getContext(),
-                                             CurrentLocation.class);
-
-                       startActivity(i);
+                                             MapActivity.class);
+                        i.putExtra("curr", true);
+                        startActivity(i);
                     } else if(pos == 3)
                     {
 
                         Intent i = new Intent(rootView.getContext(),
-                                             EastBuilding.class);
-
+                        		      MapActivity.class);
+                      
+                        i.putExtra("eb", true);
+                       
+                       
                        startActivity(i);
                     }
                     else if(pos == 2)
                     {
 
                         Intent i = new Intent(rootView.getContext(),
-                                             ThreeEast.class);
-
+                        		MapActivity.class);
+                        i.putExtra("3e", true);
                        startActivity(i);
                     }
                     else if(pos == 1)
                     {
 
                         Intent i = new Intent(rootView.getContext(),
-                                             Library.class);
+                        		MapActivity.class);
+                     
+                        i.putExtra("lib", true);
+                       startActivity(i);
+                    }
+                    else if(pos == 0)
+                    {
 
+                        Intent i = new Intent(rootView.getContext(),
+                        		MapActivity.class);
+                     
+                        i.putExtra("3wn", true);
                        startActivity(i);
                     }
                     else {

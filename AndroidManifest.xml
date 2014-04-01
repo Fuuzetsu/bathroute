@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
 
     <uses-feature android:name="android.hardware.location.network" />
     <uses-feature android:name="android.hardware.location.gps" />
@@ -56,8 +57,8 @@
             android:label="Lib" >
         </activity>
         <activity
-            android:name=".CurrentLocation"
-            android:label="Current Location" >
+            android:name=".MapActivity"
+            android:label="map activity" >
         </activity>
     </application>
 
