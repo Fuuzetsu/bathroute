@@ -43,5 +43,9 @@ public class Node {
         "Neighbours: " + neighbours.toString() + "\n";
     }
 
+    public Option<String> getName() {
+        return this.name;
+    }
+
 
 }

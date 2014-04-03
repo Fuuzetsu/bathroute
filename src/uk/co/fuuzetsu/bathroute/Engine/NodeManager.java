@@ -5,9 +5,12 @@ import fj.P;
 import fj.P2;
 import fj.data.Option;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.List;
 import java.util.List;
 import java.util.Set;
 
@@ -20,6 +23,33 @@ public class NodeManager {
 
     public List<Node> getNodes() {
         return this.nodes;
+    }
+
+    /* Useful when we want a map parametrised by Integer such as for
+       ListViews. This ignores nodes without a name. */
+    public Map<Integer, Node> toSortedMap() {
+        List<Node> namedNodes = new ArrayList<Node>(getNodes().size());
+        for (Node n : getNodes()) {
+            if (n.getName().isSome()) {
+                namedNodes.add(n);
+            }
+        }
+
+
+
+        Collections.sort(namedNodes, new Comparator<Node>() {
+                @Override
+                public int compare(Node n, Node m) {
+                    return n.getName().some().compareTo(m.getName().some());
+                }
+            });
+
+        Map<Integer, Node> m = new HashMap<Integer, Node>(namedNodes.size());
+        for (Integer i = 0; i < namedNodes.size(); i++) {
+            m.put(i, namedNodes.get(i));
+        }
+
+        return m;
     }
 
     public Option<Node> getClosestNode(final Location l) {

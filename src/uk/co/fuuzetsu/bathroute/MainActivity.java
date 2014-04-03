@@ -12,11 +12,6 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import java.io.IOException;
 import java.util.List;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.exception.ExceptionUtils;
-import org.xmlpull.v1.XmlPullParserException;
-import uk.co.fuuzetsu.bathroute.Engine.Node;
-import uk.co.fuuzetsu.bathroute.Engine.NodeDeserialiser;
 
 public class MainActivity
     extends FragmentActivity
@@ -81,22 +76,6 @@ public class MainActivity
                 public void onPageScrollStateChanged(int arg0) {
                 }
             });
-        Log.v("Main", "deserialising");
-        NodeDeserialiser nd = new NodeDeserialiser();
-        Resources res = getResources();
-
-        try {
-            String nodeText = IOUtils.toString(res.openRawResource(R.raw.nodes));
-            List<Node> nodes = nd.deserialise(nodeText);
-            Log.v("Main", "Done deseralising");
-            Log.v("Main", nodes.toString());
-        } catch (IOException e) {
-            Log.v("Main", "Deserialising failed with IOException");
-            Log.v("Main", ExceptionUtils.getStackTrace(e));
-        } catch (XmlPullParserException e) {
-            Log.v("Main", "Deserialising failed with XmlPullParserException");
-            Log.v("Main", ExceptionUtils.getStackTrace(e));
-        }
     }
 
     private class TabsPagerAdapter extends FragmentPagerAdapter {
