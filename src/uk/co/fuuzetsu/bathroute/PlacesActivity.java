@@ -44,7 +44,6 @@ public class PlacesActivity extends Fragment {
             String nodeText = IOUtils.toString(res.openRawResource(R.raw.nodes));
             nodes = nd.deserialise(nodeText);
             Log.v("Places", "Done deseralising");
-            Log.v("Places", nodes.toString());
         } catch (IOException e) {
             Log.v("Places", "Deserialising failed with IOException");
             Log.v("Places", ExceptionUtils.getStackTrace(e));
@@ -74,54 +73,22 @@ public class PlacesActivity extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view,
                                         int pos, long id) {
-                    if (pos == 4) {
 
-
-
+                    if (pos < m.size() && pos >= 0) {
                         Intent i = new Intent(rootView.getContext(),
                                               MapActivity.class);
-                        i.putExtra("curr", true);
+
+                        i.putExtra("nodeName", m.get(pos).getName().some());
+                        i.putExtra("nodeLatitude",
+                                   m.get(pos).getLocation().getLatitude());
+                        i.putExtra("nodeLongitude",
+                                   m.get(pos).getLocation().getLongitude());
                         startActivity(i);
-                    } else if(pos == 3)
-                        {
 
-                            Intent i = new Intent(rootView.getContext(),
-                                                  MapActivity.class);
-
-                            i.putExtra("eb", true);
-
-
-                            startActivity(i);
-                        }
-                    else if(pos == 2)
-                        {
-
-                            Intent i = new Intent(rootView.getContext(),
-                                                  MapActivity.class);
-                            i.putExtra("3e", true);
-                            startActivity(i);
-                        }
-                    else if(pos == 1)
-                        {
-
-                            Intent i = new Intent(rootView.getContext(),
-                                                  MapActivity.class);
-
-                            i.putExtra("lib", true);
-                            startActivity(i);
-                        }
-                    else if(pos == 0)
-                        {
-
-                            Intent i = new Intent(rootView.getContext(),
-                                                  MapActivity.class);
-
-                            i.putExtra("3wn", true);
-                            startActivity(i);
-                        }
-                    else {
+                    } else {
                         Log.v("PlacesActivity",
-                              String.format("Clicked on pos %d", pos));
+                              String.format("Clicked on unavailable pos: %d",
+                                            pos));
                     }
                 }
             };

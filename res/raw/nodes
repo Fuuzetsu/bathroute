@@ -25,13 +25,6 @@
     <name>Bus stop</name>
     <latitude>51.37888</latitude>
     <longitude>-2.32541</longitude>
-    <neighbours>3</neighbours>
-  </node>
-  <node>
-    <id>4</id>
-    <name>Bus stop</name>
-    <latitude>51.37888</latitude>
-    <longitude>-2.32541</longitude>
     <neighbours>3 5</neighbours>
   </node>
   <node>
