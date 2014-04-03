@@ -37,63 +37,16 @@ public class MapActivity extends Activity {
         initializemap();
         //list of overlay items
         ArrayList<OverlayItem> overlayItemArray = new ArrayList<OverlayItem>();
+        Bundle b = getIntent().getExtras();
+        String nodeName = b.getString("nodeName");
+        centerLat = b.getDouble("nodeLatitude");
+        centerLong = b.getDouble("nodeLongitude");
 
-        //User clicks 3WN
-        if(this.getIntent().getExtras().getBoolean("3wn"))
-            {
-                //1. set the latitudes to 3WN
-                centerLat = 51.380533;
-                centerLong = -2.329622;
-                mapView.getController().setCenter(new GeoPoint(centerLat,centerLong));
-                OverlayItem olItem = new OverlayItem("Placement Lectures", "3WN", new GeoPoint(centerLat,centerLong));
-                overlayItemArray.add(olItem);
-            }
-        //LIB
-        else if(this.getIntent().getExtras().getBoolean("lib"))
-            {
-                centerLat = 51.379932;
-                centerLong = -2.327943;
-                mapView.getController().setCenter(new GeoPoint(centerLat,centerLong));
-                OverlayItem olItem = new OverlayItem("Open 24 hours", "LIB", new GeoPoint(centerLat,centerLong));
-                overlayItemArray.add(olItem);
-            }
-        //3E
-        else if(this.getIntent().getExtras().getBoolean("3e"))
-            {
-                centerLat = 51.380148;
-                centerLong = -2.327317;
-                mapView.getController().setCenter(new GeoPoint(centerLat,centerLong));
-                OverlayItem olItem = new OverlayItem("Lecture Halls", "3e", new GeoPoint(centerLat,centerLong));
-                overlayItemArray.add(olItem);
-            }
-        //EB
-        else if(this.getIntent().getExtras().getBoolean("eb"))
-            {
-                centerLat = 51.378766;
-                centerLong = -2.323099;
-                mapView.getController().setCenter(new GeoPoint(centerLat,centerLong));
-                OverlayItem olItem = new OverlayItem("Department of Computer Science", "eb", new GeoPoint(centerLat,centerLong));
-                overlayItemArray.add(olItem);
-            }
-        //CURRENT.LOC - this has to change
-        else if(this.getIntent().getExtras().getBoolean("curr"))
-            {
-                myLocationoverlay = new MyLocationNewOverlay(this, mapView);
-
-                myLocationoverlay.enableFollowLocation();
-                myLocationoverlay.enableMyLocation();
-
-                myLocationoverlay.setDrawAccuracyEnabled(false);
-                myLocationoverlay.runOnFirstFix(new Runnable() {
-                        @Override
-                        public void run() {
-                            mapView.getController().animateTo(
-                                                              myLocationoverlay.getMyLocation());
-                        }
-                    });
-                mapView.getOverlays().add(myLocationoverlay);
-
-            }
+        mapView.getController().setCenter(new GeoPoint(centerLat, centerLong));
+        OverlayItem olItem =
+            new OverlayItem("No comment", nodeName,
+                            new GeoPoint(centerLat,centerLong));
+        overlayItemArray.add(olItem);
 
         MyOwnItemizedOverlay overlay = new MyOwnItemizedOverlay(this, overlayItemArray);
         //to show pin
