@@ -28,8 +28,8 @@ import org.json.JSONObject;
 
 public class CommunicationManager {
 
-    private final String HOST = "10.0.2.2";
-    private final int PORT = 7777;
+    private static final String HOST = "10.0.2.2";
+    private static final int PORT = 7777;
     private final Socket s;
     private final DataOutputStream sout;
     private final DataInputStream sin;
@@ -41,6 +41,25 @@ public class CommunicationManager {
         this.sout = new DataOutputStream(s.getOutputStream());
         this.sin =  new DataInputStream(s.getInputStream());
         this.reader = new BufferedReader(new InputStreamReader(this.sin));
+    }
+
+    public CommunicationManager() throws IOException, UnknownHostException {
+        this(CommunicationManager.HOST, CommunicationManager.PORT);
+    }
+
+    /* When bool is true, notify online, else offline */
+    public JSONObject createOnlineStatusRequest(final Boolean b) {
+        JSONObject o = new JSONObject();
+        try {
+            o.put("tag", "OnlineStatus");
+            o.put("contents", b ? "Online" : "Offline");
+        } catch (JSONException e) {
+            /* This really should never happen. Ever. */
+            Log.e("CommunicationManager",
+                  "JSONException in createOnlineStatusRequest:\n"
+                  + ExceptionUtils.getStackTrace(e));
+        }
+        return o;
     }
 
     public void write(byte[] b) throws IOException {
