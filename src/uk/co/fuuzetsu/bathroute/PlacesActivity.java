@@ -76,12 +76,13 @@ public class PlacesActivity extends Fragment {
             values[i] = m.get(i).getName().some();
         }
 
-        ArrayAdapter<String> lvadapter = new ArrayAdapter<String>(
+      ArrayAdapter<String> lvadapter = new ArrayAdapter<String>(
                 rootView.getContext(), android.R.layout.simple_list_item_1,
                 values);
-
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>( rootView.getContext(),
+                android.R.layout.simple_dropdown_item_1line, values);
         searchField = (AutoCompleteTextView) rootView.findViewById(R.id.search);
-        searchField.setAdapter(lvadapter);
+        searchField.setAdapter(adapter);
         // user will see locations after one character
         searchField.setThreshold(1);
 
