@@ -13,11 +13,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.xmlpull.v1.XmlPullParserException;
+import uk.co.fuuzetsu.bathroute.Engine.CommunicationManager;
 import uk.co.fuuzetsu.bathroute.Engine.Node;
 import uk.co.fuuzetsu.bathroute.Engine.NodeDeserialiser;
 import uk.co.fuuzetsu.bathroute.Engine.NodeManager;
@@ -61,6 +62,21 @@ public class PlacesActivity extends Fragment {
             /* toSortedMap assures we have some name. */
             values[i] = m.get(i).getName().some();
         }
+
+        /* Try to send a clear-text message as a test */
+        /*
+        new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        CommunicationManager cm = new CommunicationManager();
+                        cm.write(String.format("Got %d named places.", m.size()));
+                    } catch (IOException e) {
+                        Log.v("PlacesActivity", ExceptionUtils.getStackTrace(e));
+                    }
+                }
+            }.start();
+        */
 
         ArrayAdapter<String> lvadapter
             = new ArrayAdapter<String>(rootView.getContext(),
