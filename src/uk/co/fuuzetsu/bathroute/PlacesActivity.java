@@ -95,7 +95,7 @@ public class PlacesActivity extends Fragment {
                     // finding id by name of string
                     int id = findIdByName(m, str);
 
-                    if (id != 0) {
+                    if (id != -1) {
 
                         Intent i = new Intent(rootView.getContext(),
                                 MapActivity.class);
@@ -154,6 +154,6 @@ public class PlacesActivity extends Fragment {
                 return i;
             }
         }
-        return 0;
+        return -1;
     }
 }
