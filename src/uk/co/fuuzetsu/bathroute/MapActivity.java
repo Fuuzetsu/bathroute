@@ -2,6 +2,7 @@ package uk.co.fuuzetsu.bathroute;
 
 import java.util.ArrayList;
 
+import org.osmdroid.bonuspack.overlays.InfoWindow;
 import org.osmdroid.bonuspack.overlays.Marker;
 import org.osmdroid.bonuspack.overlays.Marker.OnMarkerClickListener;
 import org.osmdroid.bonuspack.overlays.MarkerInfoWindow;
@@ -62,17 +63,27 @@ public class MapActivity extends Activity {
 			}
 		});
 
-		// mapView.getController().setCenter(new GeoPoint(centerLat,
-		// centerLong));
-		OverlayItem olItem = new OverlayItem("No comment", nodeName,
-				new GeoPoint(centerLat, centerLong));
-		overlayItemArray.add(olItem);
+		mapView.getController().setCenter(new GeoPoint(centerLat, centerLong));
+		// OverlayItem olItem = new OverlayItem("No comment", nodeName,
+		// new GeoPoint(centerLat, centerLong));
+		// overlayItemArray.add(olItem);
+		//
+		// MyOwnItemizedOverlay overlay = new MyOwnItemizedOverlay(this,
+		// overlayItemArray);
+		// // to show pin
+		// mapView.getOverlays().add(overlay);
 
-		MyOwnItemizedOverlay overlay = new MyOwnItemizedOverlay(this,
-				overlayItemArray);
-		// to show pin
-		mapView.getOverlays().add(overlay);
+		Marker startMarker = new Marker(mapView);
+
+		startMarker.setPosition(new GeoPoint(centerLat, centerLong));
+		startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+		startMarker.setIcon(getResources().getDrawable(R.drawable.iconmarka));
+		startMarker.setAnchor(Marker.ANCHOR_CENTER, 1.0f);
+		InfoWindow infoWindow = new MyInfoWindow(R.layout.popview, mapView,
+				nodeName, "", "");
+		startMarker.setInfoWindow(infoWindow);
 		mapView.getOverlays().add(myLocationoverlay);
+		mapView.getOverlays().add(startMarker);
 		mapView.invalidate();
 
 	}

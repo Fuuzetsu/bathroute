@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.38"
-        android:text="Integrated Project Group 8\n\nCorey Chan\nMateusz Kowalcyk\nKatie Luff\nRobert Sampson\nAman Singh"
+        android:text="Integrated Project Group 8\n\nGuangyu Chen\nMateusz Kowalcyk\nKatie Luff\nRobert Sampson\nAman Singh"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </LinearLayout>
