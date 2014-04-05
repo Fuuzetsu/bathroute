@@ -14,10 +14,15 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content" />
 
-  <EditText
-      android:id="@+id/places_edit_text"
+  <AutoCompleteTextView
+      android:id="@+id/search"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content" />
+      android:layout_height="wrap_content"
+      android:ems="10"
+      android:text="" >
+
+      <requestFocus />
+  </AutoCompleteTextView>
 
   <ListView
       android:id="@+id/places_list_view"
