@@ -29,127 +29,127 @@ import android.graphics.Color;
 
 public class MapActivity extends Activity {
 
-	// mapView object
-	private MapView mapView;
-	// pre-setting the current Latitude and Longitude at center at the library
-	public double centerLat = 51.379932;
-	public double centerLong = -2.327943;
-	private MyLocationNewOverlay myLocationoverlay;
-	private LocationManager myLocationmanger;
+        // mapView object
+        private MapView mapView;
+        // pre-setting the current Latitude and Longitude at center at the library
+        public double centerLat = 51.379932;
+        public double centerLong = -2.327943;
+        private MyLocationNewOverlay myLocationoverlay;
+        private LocationManager myLocationmanger;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
 
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		initializemap();
-		// list of overlay items
-		ArrayList<OverlayItem> overlayItemArray = new ArrayList<OverlayItem>();
-		Bundle b = getIntent().getExtras();
-		String nodeName = b.getString("nodeName");
-		centerLat = b.getDouble("nodeLatitude");
-		centerLong = b.getDouble("nodeLongitude");
-		myLocationoverlay = new MyLocationNewOverlay(this, mapView);
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_main);
+                initializemap();
+                // list of overlay items
+                ArrayList<OverlayItem> overlayItemArray = new ArrayList<OverlayItem>();
+                Bundle b = getIntent().getExtras();
+                String nodeName = b.getString("nodeName");
+                centerLat = b.getDouble("nodeLatitude");
+                centerLong = b.getDouble("nodeLongitude");
+                myLocationoverlay = new MyLocationNewOverlay(this, mapView);
 
-		myLocationoverlay.enableFollowLocation();
-		myLocationoverlay.enableMyLocation();
+                myLocationoverlay.enableFollowLocation();
+                myLocationoverlay.enableMyLocation();
 
-		myLocationoverlay.setDrawAccuracyEnabled(false);
-		myLocationoverlay.runOnFirstFix(new Runnable() {
-			@Override
-			public void run() {
-				mapView.getController().animateTo(
-						myLocationoverlay.getMyLocation());
-			}
-		});
+                myLocationoverlay.setDrawAccuracyEnabled(false);
+                myLocationoverlay.runOnFirstFix(new Runnable() {
+                        @Override
+                        public void run() {
+                                mapView.getController().animateTo(
+                                                myLocationoverlay.getMyLocation());
+                        }
+                });
 
-		mapView.getController().setCenter(new GeoPoint(centerLat, centerLong));
-		// OverlayItem olItem = new OverlayItem("No comment", nodeName,
-		// new GeoPoint(centerLat, centerLong));
-		// overlayItemArray.add(olItem);
-		//
-		// MyOwnItemizedOverlay overlay = new MyOwnItemizedOverlay(this,
-		// overlayItemArray);
-		// // to show pin
-		// mapView.getOverlays().add(overlay);
+                mapView.getController().setCenter(new GeoPoint(centerLat, centerLong));
+                // OverlayItem olItem = new OverlayItem("No comment", nodeName,
+                // new GeoPoint(centerLat, centerLong));
+                // overlayItemArray.add(olItem);
+                //
+                // MyOwnItemizedOverlay overlay = new MyOwnItemizedOverlay(this,
+                // overlayItemArray);
+                // // to show pin
+                // mapView.getOverlays().add(overlay);
 
-		Marker startMarker = new Marker(mapView);
+                Marker startMarker = new Marker(mapView);
 
-		startMarker.setPosition(new GeoPoint(centerLat, centerLong));
-		startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-		startMarker.setIcon(getResources().getDrawable(R.drawable.iconmarka));
-		startMarker.setAnchor(Marker.ANCHOR_CENTER, 1.0f);
-		InfoWindow infoWindow = new MyInfoWindow(R.layout.popview, mapView,
-				nodeName, "", "");
-		startMarker.setInfoWindow(infoWindow);
-		mapView.getOverlays().add(myLocationoverlay);
-		mapView.getOverlays().add(startMarker);
-		mapView.invalidate();
+                startMarker.setPosition(new GeoPoint(centerLat, centerLong));
+                startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+                startMarker.setIcon(getResources().getDrawable(R.drawable.iconmarka));
+                startMarker.setAnchor(Marker.ANCHOR_CENTER, 1.0f);
+                InfoWindow infoWindow = new MyInfoWindow(R.layout.popview, mapView,
+                                nodeName, "", "");
+                startMarker.setInfoWindow(infoWindow);
+                mapView.getOverlays().add(myLocationoverlay);
+                mapView.getOverlays().add(startMarker);
+                mapView.invalidate();
 
-	}
+        }
 
-	public void initializemap() {
-		mapView = (MapView) this.findViewById(R.id.mapview);
-		mapView.setTileSource(TileSourceFactory.MAPNIK);
-		mapView.setBuiltInZoomControls(true);
-		mapView.setMultiTouchControls(true);
-		mapView.setMaxZoomLevel(19);
-		mapView.getController().setZoom(17);
-	}
+        public void initializemap() {
+                mapView = (MapView) this.findViewById(R.id.mapview);
+                mapView.setTileSource(TileSourceFactory.MAPNIK);
+                mapView.setBuiltInZoomControls(true);
+                mapView.setMultiTouchControls(true);
+                mapView.setMaxZoomLevel(19);
+                mapView.getController().setZoom(17);
+        }
 
 }
 
 class MyMarker extends Marker {
 
-	public MyMarker(MapView mapView) {
-		super(mapView);
+        public MyMarker(MapView mapView) {
+                super(mapView);
 
-	}
+        }
 
-	@Override
-	public void setOnMarkerClickListener(OnMarkerClickListener listener) {
-		showInfoWindow();
-		super.setOnMarkerClickListener(listener);
-	}
+        @Override
+        public void setOnMarkerClickListener(OnMarkerClickListener listener) {
+                showInfoWindow();
+                super.setOnMarkerClickListener(listener);
+        }
 
 }
 
 class MyInfoWindow extends MarkerInfoWindow {
-	private String title;
-	private String description;
-	private String subdescription;
+        private String title;
+        private String description;
+        private String subdescription;
 
-	public MyInfoWindow(int layoutResId, MapView mapView, String title,
-			String descrpition, String subdescrition) {
-		super(layoutResId, mapView);
-		this.description = descrpition;
-		this.title = title;
-		this.subdescription = subdescrition;
-	}
+        public MyInfoWindow(int layoutResId, MapView mapView, String title,
+                        String descrpition, String subdescrition) {
+                super(layoutResId, mapView);
+                this.description = descrpition;
+                this.title = title;
+                this.subdescription = subdescrition;
+        }
 
-	public void onClose() {
-	}
+        public void onClose() {
+        }
 
-	public void onOpen(Object arg0) {
-		LinearLayout layout = (LinearLayout) mView
-				.findViewById(R.id.bubble_layout);
+        public void onOpen(Object arg0) {
+                LinearLayout layout = (LinearLayout) mView
+                                .findViewById(R.id.bubble_layout);
 
-		TextView txtTitle = (TextView) mView.findViewById(R.id.bubble_title);
-		TextView txtDescription = (TextView) mView
-				.findViewById(R.id.bubble_description);
-		TextView txtSubdescription = (TextView) mView
-				.findViewById(R.id.bubble_subdescription);
+                TextView txtTitle = (TextView) mView.findViewById(R.id.bubble_title);
+                TextView txtDescription = (TextView) mView
+                                .findViewById(R.id.bubble_description);
+                TextView txtSubdescription = (TextView) mView
+                                .findViewById(R.id.bubble_subdescription);
 
-		txtTitle.setText(title);
-		txtDescription.setText(description);
-		txtSubdescription.setText(subdescription);
-		layout.setOnClickListener(new OnClickListener() {
+                txtTitle.setText(title);
+                txtDescription.setText(description);
+                txtSubdescription.setText(subdescription);
+                layout.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
+                        @Override
+                        public void onClick(View v) {
+                                // TODO Auto-generated method stub
 
-			}
-		});
-	}
+                        }
+                });
+        }
 }
