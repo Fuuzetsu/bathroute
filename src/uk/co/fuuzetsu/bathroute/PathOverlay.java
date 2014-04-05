@@ -1,5 +1,6 @@
 package uk.co.fuuzetsu.bathroute;
 
+import java.util.List;
 import java.util.ArrayList;
 
 import org.osmdroid.DefaultResourceProxyImpl;
@@ -21,7 +22,7 @@ public class PathOverlay extends Overlay {
         /**
          * Stores points, converted to the map projection.
          */
-        private ArrayList<Point> mPoints;
+        private List<Point> mPoints;
 
         /**
          * Number of points that have precomputed values.
