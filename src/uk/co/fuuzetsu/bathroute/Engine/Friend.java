@@ -1,18 +1,17 @@
 package uk.co.fuuzetsu.bathroute.Engine;
 
 import java.util.List;
-import java.security.interfaces.RSAPublicKey;
 
 public class Friend {
-    private final RSAPublicKey key;
+    private final Integer key;
     private final List<String> aliases;
 
-    public Friend(final RSAPublicKey key, final List<String> aliases) {
+    public Friend(final Integer key, final List<String> aliases) {
         this.key = key;
         this.aliases = aliases;
     }
 
-    public RSAPublicKey getKey() {
+    public Integer getKey() {
         return this.key;
     }
 
