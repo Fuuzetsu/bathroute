@@ -64,14 +64,6 @@ public class MapActivity extends Activity {
                 });
 
                 mapView.getController().setCenter(new GeoPoint(centerLat, centerLong));
-                // OverlayItem olItem = new OverlayItem("No comment", nodeName,
-                // new GeoPoint(centerLat, centerLong));
-                // overlayItemArray.add(olItem);
-                //
-                // MyOwnItemizedOverlay overlay = new MyOwnItemizedOverlay(this,
-                // overlayItemArray);
-                // // to show pin
-                // mapView.getOverlays().add(overlay);
 
                 Marker startMarker = new Marker(mapView);
 
