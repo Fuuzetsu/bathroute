@@ -1,5 +1,6 @@
 package uk.co.fuuzetsu.bathroute.Engine;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Friend {
@@ -10,6 +11,11 @@ public class Friend {
         this.key = key;
         this.aliases = aliases;
     }
+
+    public Friend(final Integer key) {
+        this(key, new ArrayList<String>());
+    }
+
 
     public Integer getKey() {
         return this.key;

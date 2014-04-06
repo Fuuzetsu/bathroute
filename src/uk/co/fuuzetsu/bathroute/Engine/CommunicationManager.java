@@ -36,21 +36,6 @@ public class CommunicationManager {
         this(CommunicationManager.HOST, CommunicationManager.PORT);
     }
 
-    /* When bool is true, notify online, else offline */
-    public JSONObject createOnlineStatusRequest(final Boolean b) {
-        JSONObject o = new JSONObject();
-        try {
-            o.put("tag", "OnlineStatus");
-            o.put("contents", b ? "Online" : "Offline");
-        } catch (JSONException e) {
-            /* This really should never happen. Ever. */
-            Log.e("CommunicationManager",
-                  "JSONException in createOnlineStatusRequest:\n"
-                  + ExceptionUtils.getStackTrace(e));
-        }
-        return o;
-    }
-
     public void write(byte[] b) throws IOException {
         this.sout.write(b);
         this.sout.flush();

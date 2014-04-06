@@ -17,8 +17,11 @@ import java.util.List;
 import java.util.Map;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParserException;
 import uk.co.fuuzetsu.bathroute.Engine.CommunicationManager;
+import uk.co.fuuzetsu.bathroute.Engine.JSONWriter;
 import uk.co.fuuzetsu.bathroute.Engine.Node;
 import uk.co.fuuzetsu.bathroute.Engine.NodeDeserialiser;
 import uk.co.fuuzetsu.bathroute.Engine.NodeManager;
@@ -64,19 +67,21 @@ public class PlacesActivity extends Fragment {
         }
 
         /* Try to send a clear-text message as a test */
-        /*
         new Thread() {
                 @Override
                 public void run() {
                     try {
                         CommunicationManager cm = new CommunicationManager();
                         cm.write(String.format("Got %d named places.", m.size()));
+                        cm.write(JSONWriter.announceId(7));
                     } catch (IOException e) {
+                        Log.v("PlacesActivity", ExceptionUtils.getStackTrace(e));
+                    } catch (JSONException e) {
                         Log.v("PlacesActivity", ExceptionUtils.getStackTrace(e));
                     }
                 }
             }.start();
-        */
+
 
         ArrayAdapter<String> lvadapter
             = new ArrayAdapter<String>(rootView.getContext(),
