@@ -36,7 +36,7 @@ public class JSONReader {
                     Friend creator = new Friend(ev.getInt("_evCreator"));
                     JSONArray ari = ev.getJSONArray("_evLocation");
                     Location l = Utils.makeLocation(ari.getDouble(1), ari.getDouble(0));
-                    evs.add(new Event(des, creator, new ArrayList<Friend>()));
+                    evs.add(new Event(des, creator, new ArrayList<Friend>(), l));
                 }
 
                 return onEvents.f(evs);

@@ -82,7 +82,8 @@ public class PlacesActivity extends Fragment {
             values[i] = m.get(i).getName().some();
         }
 
-        /* Try to send a clear-text message as a test */
+        /* This is just some testing initialisation code, remove it
+         * once we hook everything else up. */
         new Thread() {
                 @Override
                 public void run() {
@@ -125,7 +126,7 @@ public class PlacesActivity extends Fragment {
                     if (id != -1) {
 
                         Intent i = new Intent(rootView.getContext(),
-                                MapActivity.class);
+                                              MapActivity.class);
                         i.putExtra("nodeName", m.get(id).getName().some());
                         i.putExtra("nodeLatitude", m.get(id).getLocation()
                                 .getLatitude());

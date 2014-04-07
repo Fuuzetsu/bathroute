@@ -19,6 +19,7 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import uk.co.fuuzetsu.bathroute.Engine.JSONReader;
+import uk.co.fuuzetsu.bathroute.Engine.DataStore;
 
 public class CommunicationManager {
 
@@ -54,6 +55,8 @@ public class CommunicationManager {
             Log.v("CommunicationManager",
                   "Started reader()");
 
+            final DataStore ds = DataStore.getInstance();
+
             /* Callbacks */
             F<Integer, Unit> n = new F<Integer, Unit>() {
                 @Override
@@ -78,7 +81,7 @@ public class CommunicationManager {
                 public Unit f(List<Event> es) {
                     Log.v("CommunicationManager",
                           "Received events: " + es.toString());
-                    return Unit.unit();
+                    return ds.setEvents(es);
                 }
             };
 

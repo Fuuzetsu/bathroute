@@ -16,7 +16,6 @@ public class Friend {
         this(key, new ArrayList<String>());
     }
 
-
     public Integer getKey() {
         return this.key;
     }
