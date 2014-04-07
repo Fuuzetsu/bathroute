@@ -1,5 +1,8 @@
 package uk.co.fuuzetsu.bathroute.Engine;
 
+import android.location.Location;
+import java.util.ArrayList;
+import java.util.Collection;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,6 +33,25 @@ public class JSONWriter {
         return o;
     }
 
+    public static JSONObject location(final Friend u, final Location l) throws JSONException {
+        JSONObject in = new JSONObject();
+        in.put("tag", "Share");
+        Double lat = l.getLatitude();
+        Double lon = l.getLongitude();
+        in.put("contents", lat);
+        in.accumulate("contents", lon);
+
+
+        JSONObject i = new JSONObject();
+        i.put("tag", "FriendStatus");
+        i.put("contents", in);
+
+        JSONObject o = new JSONObject();
+        o.put("request", i);
+        o.put("recipient", u.getKey());
+        return o;
+    }
+
     public static JSONObject friend(FriendAction a, Friend u) throws JSONException {
         JSONObject o = new JSONObject();
         o.put("tag", "FriendStatus");
@@ -38,7 +60,8 @@ public class JSONWriter {
         case ADD: i.put("tag", "Add"); break;
         case REMOVE: i.put("tag", "Remove"); break;
         case BLOCK: i.put("tag", "Block"); break;
-        case SHARE: i.put("tag", "Share"); break;
+        case SHARE:
+            i.put("tag", "Share"); break;
         }
 
         i.put("contents", u.getKey());

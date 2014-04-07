@@ -33,10 +33,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParserException;
 import uk.co.fuuzetsu.bathroute.Engine.CommunicationManager;
+import uk.co.fuuzetsu.bathroute.Engine.Friend;
 import uk.co.fuuzetsu.bathroute.Engine.JSONWriter;
 import uk.co.fuuzetsu.bathroute.Engine.Node;
 import uk.co.fuuzetsu.bathroute.Engine.NodeDeserialiser;
 import uk.co.fuuzetsu.bathroute.Engine.NodeManager;
+import uk.co.fuuzetsu.bathroute.Engine.Utils;
 
 public class PlacesActivity extends Fragment {
 
@@ -86,8 +88,10 @@ public class PlacesActivity extends Fragment {
                 public void run() {
                     try {
                         CommunicationManager cm = new CommunicationManager();
+                        cm.listener().start();
                         cm.write(String.format("Got %d named places.", m.size()));
                         cm.write(JSONWriter.announceId(7));
+                        cm.write(JSONWriter.location(new Friend(7), Utils.makeLocation(8d, -3d)));
                     } catch (IOException e) {
                         Log.v("PlacesActivity", ExceptionUtils.getStackTrace(e));
                     } catch (JSONException e) {
