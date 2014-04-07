@@ -89,9 +89,11 @@ public class PlacesActivity extends Fragment {
                     try {
                         CommunicationManager cm = new CommunicationManager();
                         cm.listener().start();
-                        cm.write(String.format("Got %d named places.", m.size()));
                         cm.write(JSONWriter.announceId(7));
-                        cm.write(JSONWriter.location(new Friend(7), Utils.makeLocation(8d, -3d)));
+                        JSONObject ev = JSONWriter.createEvent
+                            (new Friend (2), Utils.makeLocation(3d, -7d), "foobar");
+                        cm.write(ev); cm.write(ev); cm.write(ev);
+                        cm.write(JSONWriter.requestEvents(new Friend(7)));
                     } catch (IOException e) {
                         Log.v("PlacesActivity", ExceptionUtils.getStackTrace(e));
                     } catch (JSONException e) {

@@ -14,6 +14,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.nio.charset.Charset;
+import java.util.List;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -72,11 +73,21 @@ public class CommunicationManager {
                 }
             };
 
+            F<List<Event>, Unit> eventsC = new F<List<Event>, Unit>() {
+                @Override
+                public Unit f(List<Event> es) {
+                    Log.v("CommunicationManager",
+                          "Received events: " + es.toString());
+                    return Unit.unit();
+                }
+            };
+
+
             String socketInput;
             while ((socketInput = reader.readLine()) != null && socketInput != null) {
                 Log.v("CommunicationManager",
                       "Received a message: " + socketInput);
-                JSONReader.onFriendAction(socketInput, n, n, n, shareC);
+                JSONReader.onFriendAction(socketInput, n, n, n, shareC, eventsC);
             }
 
             Log.v("CommunicationManager",

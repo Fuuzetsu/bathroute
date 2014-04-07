@@ -6,10 +6,13 @@ import java.util.List;
 public class Event {
     private final String description;
     private final List<Friend> attendees;
+    private final Friend creator;
 
-    public Event(final String description, final List<Friend> attendees) {
+    public Event(final String description, final Friend creator,
+                 final List<Friend> attendees) {
         this.description = description;
         this.attendees = attendees;
+        this.creator = creator;
     }
 
     public String getDescription() {
@@ -18,6 +21,10 @@ public class Event {
 
     public List<Friend> getAttendees() {
         return this.attendees;
+    }
+
+    public Friend getCreator() {
+        return this.creator;
     }
 
 }
