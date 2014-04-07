@@ -1,7 +1,12 @@
 package uk.co.fuuzetsu.bathroute;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.osmdroid.bonuspack.overlays.InfoWindow;
 import org.osmdroid.bonuspack.overlays.Marker;
 import org.osmdroid.bonuspack.overlays.Marker.OnMarkerClickListener;
@@ -12,11 +17,18 @@ import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.Overlay;
 import org.osmdroid.views.overlay.OverlayItem;
-import org.osmdroid.views.overlay.PathOverlay;
+
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
+import org.xmlpull.v1.XmlPullParserException;
+
+import uk.co.fuuzetsu.bathroute.Engine.Node;
+import uk.co.fuuzetsu.bathroute.Engine.NodeDeserialiser;
+import uk.co.fuuzetsu.bathroute.Engine.NodeManager;
 
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.ContactsContract.CommonDataKinds.Im;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,6 +36,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 
@@ -36,6 +49,7 @@ public class MapActivity extends Activity {
         public double centerLong = -2.327943;
         private MyLocationNewOverlay myLocationoverlay;
         private LocationManager myLocationmanger;
+        private PathOverlay pOverlay;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +57,35 @@ public class MapActivity extends Activity {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_main);
                 initializemap();
+                pOverlay = new PathOverlay(Color.BLACK, getApplicationContext());
+                //////////////////////////////////////////////////////////////////////
+                NodeDeserialiser nd = new NodeDeserialiser();
+                List<Node> nodes = new ArrayList<Node>();
+                Resources res = getResources();
+
+                try {
+                    String nodeText = IOUtils
+                            .toString(res.openRawResource(R.raw.nodes));
+                    nodes = nd.deserialise(nodeText);
+                    Log.v("Places", "Done deseralising");
+                } catch (IOException e) {
+                    Log.v("Places", "Deserialising failed with IOException");
+                    Log.v("Places", ExceptionUtils.getStackTrace(e));
+                } catch (XmlPullParserException e) {
+                    Log.v("Places", "Deserialising failed with XmlPullParserException");
+                    Log.v("Places", ExceptionUtils.getStackTrace(e));
+                }
+
+                NodeManager nm = new NodeManager(nodes);
+                final Map<Integer, Node> m = nm.toSortedMap();
+                
+                for(int i=0; i<4;i++)
+                {
+                    //adding a point to pOverlay using location from m
+                    pOverlay.addPoint(new GeoPoint(m.get(i).getLocation()));
+                }
+                
+                ////////////////////////////////////////////////////////////////////
                 // list of overlay items
                 ArrayList<OverlayItem> overlayItemArray = new ArrayList<OverlayItem>();
                 Bundle b = getIntent().getExtras();
@@ -76,6 +119,8 @@ public class MapActivity extends Activity {
                 startMarker.setInfoWindow(infoWindow);
                 mapView.getOverlays().add(myLocationoverlay);
                 mapView.getOverlays().add(startMarker);
+                //adding overlay
+                mapView.getOverlays().add(pOverlay);
                 mapView.invalidate();
 
         }
