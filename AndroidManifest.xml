@@ -34,31 +34,23 @@
         </activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="settings activity" >
+            android:label="Settings" >
         </activity>
         <activity
             android:name=".MiscActivity"
-            android:label="misc activity" >
+            android:label="Miscellaneous" >
         </activity>
         <activity
             android:name=".PlacesActivity"
-            android:label="places activity" >
+            android:label="Places" >
         </activity>
         <activity
-            android:name=".EastBuilding"
-            android:label="EB" >
-        </activity>
-        <activity
-            android:name=".ThreeEast"
-            android:label="ThreeE" >
-        </activity>
-        <activity
-            android:name=".Library"
-            android:label="Lib" >
+            android:name=".EventsActivity"
+            android:label="Events" >
         </activity>
         <activity
             android:name=".MapActivity"
-            android:label="map activity" >
+            android:label="Map" >
         </activity>
     </application>
 
