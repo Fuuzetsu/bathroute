@@ -35,6 +35,15 @@ public class Node {
     }
 
     @Override
+    public int hashCode() {
+        int result = 1;
+        result = 37 * result + id.hashCode();
+        result = 37 * result + loc.hashCode();
+        result = 37 * result + neighbours.hashCode();
+        return result;
+    }
+
+    @Override
     public String toString() {
     return
         "Node id " + id.toString() + "\n" +
@@ -43,9 +52,17 @@ public class Node {
         "Neighbours: " + neighbours.toString() + "\n";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || !(o instanceof Node)) {
+            return false;
+        }
+
+        Node n = (Node) o;
+        return loc.equals(n.getLocation()) && id.equals(n.getId());
+    }
+
     public Option<String> getName() {
         return this.name;
     }
-
-
 }

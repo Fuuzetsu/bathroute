@@ -136,9 +136,7 @@ public class PlacesActivity extends Fragment {
                     } else {
                         searchField.setText("");
                     }
-
                     return true;
-
                 }
                 return false;
             }
@@ -159,6 +157,7 @@ public class PlacesActivity extends Fragment {
                             .getLatitude());
                     i.putExtra("nodeLongitude", m.get(pos).getLocation()
                             .getLongitude());
+                    i.putExtra("nodeID", m.get(pos).getId());
                     startActivity(i);
 
                 } else {

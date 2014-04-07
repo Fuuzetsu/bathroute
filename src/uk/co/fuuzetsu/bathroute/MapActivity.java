@@ -1,15 +1,30 @@
 package uk.co.fuuzetsu.bathroute;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.provider.ContactsContract.CommonDataKinds.Im;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View.OnClickListener;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import fj.data.Option;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.osmdroid.bonuspack.overlays.InfoWindow;
-import org.osmdroid.bonuspack.overlays.Marker;
 import org.osmdroid.bonuspack.overlays.Marker.OnMarkerClickListener;
+import org.osmdroid.bonuspack.overlays.Marker;
 import org.osmdroid.bonuspack.overlays.MarkerInfoWindow;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
@@ -17,28 +32,12 @@ import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.Overlay;
 import org.osmdroid.views.overlay.OverlayItem;
-
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 import org.xmlpull.v1.XmlPullParserException;
-
 import uk.co.fuuzetsu.bathroute.Engine.Node;
 import uk.co.fuuzetsu.bathroute.Engine.NodeDeserialiser;
 import uk.co.fuuzetsu.bathroute.Engine.NodeManager;
-
-import android.location.LocationManager;
-import android.os.Bundle;
-import android.provider.ContactsContract.CommonDataKinds.Im;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Color;
+import uk.co.fuuzetsu.bathroute.Engine.Utils;
 
 public class MapActivity extends Activity {
 
@@ -58,7 +57,7 @@ public class MapActivity extends Activity {
                 setContentView(R.layout.activity_main);
                 initializemap();
                 pOverlay = new PathOverlay(Color.BLACK, getApplicationContext());
-                //////////////////////////////////////////////////////////////////////
+
                 NodeDeserialiser nd = new NodeDeserialiser();
                 List<Node> nodes = new ArrayList<Node>();
                 Resources res = getResources();
@@ -76,22 +75,39 @@ public class MapActivity extends Activity {
                     Log.v("Places", ExceptionUtils.getStackTrace(e));
                 }
 
-                NodeManager nm = new NodeManager(nodes);
-                final Map<Integer, Node> m = nm.toSortedMap();
-                
-                for(int i=0; i<4;i++)
-                {
-                    //adding a point to pOverlay using location from m
-                    pOverlay.addPoint(new GeoPoint(m.get(i).getLocation()));
-                }
-                
-                ////////////////////////////////////////////////////////////////////
-                // list of overlay items
                 ArrayList<OverlayItem> overlayItemArray = new ArrayList<OverlayItem>();
                 Bundle b = getIntent().getExtras();
                 String nodeName = b.getString("nodeName");
                 centerLat = b.getDouble("nodeLatitude");
                 centerLong = b.getDouble("nodeLongitude");
+                Integer id = b.getInt("nodeID");
+
+                /* Location we should be getting from the GPS system.
+                 * Dummy value for now.*/
+                Location start = Utils.makeLocation(-2.327943, 51.379932);
+
+                NodeManager nm = new NodeManager(nodes);
+                /* Node user chose from the list in PlacesActivity */
+                Option<Node> destinationO = nm.getNodeById(id);
+                if (destinationO.isNone()) {
+                    Log.e("MapActivity",
+                          String.format("Can't find user-chosen node ID %d", id));
+                } else {
+                    Node destination = destinationO.some();
+
+                    Option<List<Node>> p = nm.findPath(start, destination);
+                    if (p.isSome()) {
+                        for(Integer i = 0; i < p.some().size(); i++) {
+                            //adding a point to pOverlay using location from m
+                            pOverlay.addPoint(new GeoPoint(p.some().get(i).getLocation()));
+                        }
+                    } else {
+                        Log.e("MapActivity",
+                              String.format("Couldn't find a path from %s to node %s",
+                                            start.toString(), destination.toString()));
+                    }
+                }
+
                 myLocationoverlay = new MyLocationNewOverlay(this, mapView);
 
                 myLocationoverlay.enableFollowLocation();

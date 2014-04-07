@@ -8,11 +8,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.List;
-import java.util.List;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.Collections;
+import org.jgrapht.WeightedGraph;
+import org.jgrapht.GraphPath;
+import org.jgrapht.alg.DijkstraShortestPath;
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.SimpleWeightedGraph;
 
 public class NodeManager {
     private final List<Node> nodes;
@@ -25,6 +29,41 @@ public class NodeManager {
         return this.nodes;
     }
 
+    private WeightedGraph<Node, DefaultWeightedEdge> makeGraph(final Node start) {
+        WeightedGraph<Node, DefaultWeightedEdge> g =
+            new SimpleWeightedGraph<Node, DefaultWeightedEdge>(DefaultWeightedEdge.class);
+
+        List<Node> nss = new LinkedList<Node>();
+        nss.add(start);
+        for (Node n : getNodes()) {
+            nss.add(n);
+        }
+
+        for (Node n : nss) {
+            g.addVertex(n);
+        }
+
+        for (Node n : nss) {
+            for (Node ne : neighbours(n)) {
+
+                DefaultWeightedEdge e = g.addEdge(n, ne);
+                if (!(e == null)) {
+                    g.setEdgeWeight(e, n.getLocation().distanceTo(ne.getLocation()));
+                }
+            }
+        }
+        return g;
+    }
+
+    public Option<Node> getNodeById(final Integer i) {
+        for (Node n : getNodes()) {
+            if (n.getId().equals(i)) {
+                return Option.some(n);
+            }
+        }
+        return Option.none();
+    }
+
     /* Useful when we want a map parametrised by Integer such as for
        ListViews. This ignores nodes without a name. */
     public Map<Integer, Node> toSortedMap() {
@@ -34,8 +73,6 @@ public class NodeManager {
                 namedNodes.add(n);
             }
         }
-
-
 
         Collections.sort(namedNodes, new Comparator<Node>() {
                 @Override
@@ -66,68 +103,47 @@ public class NodeManager {
     }
 
     public Option<List<Node>> findPath(final Location l, final Node d) {
-        final Option<Node> closest = getClosestNode(l);
-        if (closest.isNone()) {
+        Option<Node> co = getClosestNode(l);
+        if (co.isNone()) {
             return Option.none();
         }
 
-        final Node c = closest.some();
-        final Map<Node, Float> dist = new HashMap<Node, Float>();
-        final Set<Node> q = new HashSet<Node>();
-        final Map<Node, Node> previous = new HashMap<Node, Node>();
+        Node c = co.some();
+        List<Integer> ns = new ArrayList<Integer>(1);
+        ns.add(c.getId());
+        Node s = new Node(-1, l, ns, Option.some("User location node"));
 
-        for (Node n : getNodes()) {
-            dist.put(n, Float.MAX_VALUE);
-            q.add(n);
+        WeightedGraph<Node, DefaultWeightedEdge> g = makeGraph(s);
+
+
+        Option<DijkstraShortestPath<Node, DefaultWeightedEdge>> dip =
+            Option.none();
+
+        try {
+            dip = Option.some(new DijkstraShortestPath<Node, DefaultWeightedEdge>(g, s, d));
+        } catch (IllegalArgumentException e) {
+            return Option.none();
         }
 
-        dist.put(c, 0f);
+        DijkstraShortestPath<Node, DefaultWeightedEdge> di = dip.some();
 
-        while (!q.isEmpty()) {
-            Option<Node> up = Option.none();
-            Option<Float> f = Option.none();
-            for (Node n : q) {
-                if (f.isNone() || f.some() > dist.get(n)) {
-                    up = Option.some(n);
-                    f = Option.some(dist.get(n));
-                }
-            }
+        GraphPath<Node, DefaultWeightedEdge> gp = di.getPath();
+        if (gp == null) {
+            return Option.none();
+        }
+        List<DefaultWeightedEdge> ps = gp.getEdgeList();
 
-            if (up.isNone()) {
-                return Option.none(); /* How did we manage this? */
-            }
+        List<Node> path = new LinkedList<Node>();
+        path.add(s);
 
-            Node u = up.some();
-
-            q.remove(u);
-
-            if (dist.get(u) == Float.MAX_VALUE) {
-                break;
-            }
-
-            for (Node v : neighbours(u)) {
-                if (!q.contains(v)) {
-                    continue;
-                }
-
-                Float alt = dist.get(u)
-                    + u.getLocation().distanceTo(v.getLocation());
-
-                if (alt < dist.get(v)) {
-                    dist.put(v, alt);
-                    previous.put(v, u);
-                }
-            }
+        for (DefaultWeightedEdge e : ps) {
+            path.add(gp.getGraph().getEdgeTarget(e));
         }
 
-        List<Node> path = new ArrayList<Node>(dist.size());
-        Node u = d;
-        while (previous.containsKey(u)) {
-            path.add(u);
-            u = previous.get(u);
-        }
         return Option.some(path);
+
     }
+
 
     private List<Node> neighbours(final Node n) {
         List<Integer> ns = n.getNeighbours();
