@@ -21,7 +21,7 @@ public class MainActivity
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
     // Tab titles
-    private String[] tabs = { "Places", "Social", "Settings" };
+    private String[] tabs = { "Places", "Events", "Settings" };
 
 
     @Override
@@ -91,7 +91,7 @@ public class MainActivity
             case 0:
                 return new PlacesActivity();
             case 1:
-                return new SocialActivity();
+                return new EventsActivity();
             case 2:
                 return new SettingsActivity();
             }
