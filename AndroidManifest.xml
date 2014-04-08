@@ -49,6 +49,10 @@
             android:label="Events" >
         </activity>
         <activity
+            android:name=".EventDetailsActivity"
+            android:label="EventsDetail" >
+        </activity>
+        <activity
             android:name=".MapActivity"
             android:label="Map" >
         </activity>
