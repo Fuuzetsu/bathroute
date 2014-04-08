@@ -1,773 +1,734 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nodes>
-
-<node>
-<id>1</id>
-<name>CB</name>
-<latitude>51.37996</latitude>
-<longitude>-2.32575</longitude>
-<neighbours>2</neighbours>
-</node>
-
-<node>
-<id>2</id>
-<latitude>51.37992</latitude>
-<longitude>-2.32570</longitude>
-<neighbours>1 3</neighbours>
-</node>
-
-<node>
-<id>3</id>
-<latitude>51.37987</latitude>
-<longitude>-2.32571</longitude>
-<neighbours>2 4</neighbours>
-</node>
-
-<node>
-<id>4</id>
-<latitude>51.37980</latitude>
-<longitude>-2.32575</longitude>
-<neighbours>3 5</neighbours>
-</node>
-
-<node>
-<id>5</id>
-<latitude>51.37983</latitude>
-<longitude>-2.32586</longitude>
-<neighbours>4 6</neighbours>
-</node>
-
-<node>
-<id>6</id>
-<latitude>51.37992</latitude>
-<longitude>-2.32613</longitude>
-<neighbours>5 7</neighbours>
-</node>
-
-<node>
-<id>7</id>
-<latitude>51.37999</latitude>
-<longitude>-2.32638</longitude>
-<neighbours>6 8</neighbours>
-</node>
-
-<node>
-<id>8</id>
-<latitude>51.37999</latitude>
-<longitude>-2.32666</longitude>
-<neighbours>7 9</neighbours>
-</node>
-
-<node>
-<id>9</id>
-<latitude>51.37998</latitude>
-<longitude>-2.32696</longitude>
-<neighbours>8 10</neighbours>
-</node>
-
-<node>
-<id>10</id>
-<name>3E</name>
-<latitude>51.38012</latitude>
-<longitude>-2.32749</longitude>
-<neighbours>9 11 12</neighbours>
-</node>
-
-<node>
-<id>11</id>
-<latitude>51.38008</latitude>
-<longitude>-2.32722</longitude>
-<neighbours>10 12</neighbours>
-</node>
-
-<node>
-<id>12</id>
-<latitude>51.38014</latitude>
-<longitude>-2.32757</longitude>
-<neighbours>11 13</neighbours>
-</node>
-
-<node>
-<id>13</id>
-<name>Chaplain</name>
-<latitude>51.37992</latitude>
-<longitude>-2.32765</longitude>
-<neighbours>12 14</neighbours>
-</node>
-
-<node>
-<id>14</id>
-<latitude>51.37986</latitude>
-<longitude>-2.32767</longitude>
-<neighbours>13 15</neighbours>
-</node>
-
-<node>
-<id>15</id>
-<name>Library</name>
-<latitude>51.37993</latitude>
-<longitude>-2.32794</longitude>
-<neighbours>14 </neighbours>
-</node>
-
-<node>
-<id>16</id>
-<latitude>51.37974</latitude>
-<longitude>-2.32572</longitude>
-<neighbours>4 17</neighbours>
-</node>
-
-<node>
-<id>17</id>
-<latitude>51.37969</latitude>
-<longitude>-2.32575</longitude>
-<neighbours>16 18</neighbours>
-</node>
-
-<node>
-<id>18</id>
-<latitude>51.37973</latitude>
-<longitude>-2.32560</longitude>
-<neighbours>17 19</neighbours>
-</node>
-
-<node>
-<id>19</id>
-<latitude>51.37976</latitude>
-<longitude>-2.32543</longitude>
-<neighbours>18 20</neighbours>
-</node>
-
-<node>
-<id>20</id>
-<latitude>51.37983</latitude>
-<longitude>-2.32533</longitude>
-<neighbours>19 21</neighbours>
-</node>
-
-<node>
-<id>21</id>
-<latitude>51.37988</latitude>
-<longitude>-2.32529</longitude>
-<neighbours>20 22</neighbours>
-</node>
-
-<node>
-<id>22</id>
-<latitude>51.38005</latitude>
-<longitude>-2.32505</longitude>
-<neighbours>21 23</neighbours>
-</node>
-
-<node>
-<id>23</id>
-<name>Marlborough</name>
-<latitude>51.38031</latitude>
-<longitude>-2.32475</longitude>
-<neighbours>22</neighbours>
-</node>
-
-<node>
-<id>24</id>
-<latitude>51.37980</latitude>
-<longitude>-2.32521</longitude>
-<neighbours>19</neighbours>
-</node>
-
-<node>
-<id>25</id>
-<latitude>51.37992</latitude>
-<longitude>-2.32460</longitude>
-<neighbours>24 26</neighbours>
-</node>
-
-<node>
-<id>26</id>
-<latitude>51.38009</latitude>
-<longitude>-2.32393</longitude>
-<neighbours>25 27</neighbours>
-</node>
-
-<node>
-<id>27</id>
-<latitude>51.38019</latitude>
-<longitude>-2.32351</longitude>
-<neighbours>26 28</neighbours>
-</node>
-
-<node>
-<id>28</id>
-<latitude>51.38028</latitude>
-<longitude>-2.32313</longitude>
-<neighbours>27 29</neighbours>
-</node>
-
-<node>
-<id>29</id>
-<name>Woodland</name>
-<latitude>51.38057</latitude>
-<longitude>-2.32313</longitude>
-<neighbours>28</neighbours>
-</node>
-
-<node>
-<id>30</id>
-<latitude>51.37962</latitude>
-<longitude>-2.32576</longitude>
-<neighbours>17</neighbours>
-</node>
-
-<node>
-<id>31</id>
-<latitude>51.37953</latitude>
-<longitude>-2.32580</longitude>
-<neighbours>30 32</neighbours>
-</node>
-
-<node>
-<id>32</id>
-<latitude>51.37942</latitude>
-<longitude>-2.32583</longitude>
-<neighbours>31 33</neighbours>
-</node>
-
-<node>
-<id>33</id>
-<latitude>51.37936</latitude>
-<longitude>-2.32583</longitude>
-<neighbours>32 34 38</neighbours>
-</node>
-
-
-<node>
-<name>6E</name>
-<id>38</id>
-<latitude>51.37922</latitude>
-<longitude>-2.32595</longitude>
-<neighbours>33 34 32 38</neighbours>
-</node>
-
-<node>
-<id>34</id>
-<latitude>51.37923</latitude>
-<longitude>-2.32575</longitude>
-<neighbours>33 35 38</neighbours>
-</node>
-
-<node>
-<id>35</id>
-<latitude>51.37918</latitude>
-<longitude>-2.32561</longitude>
-<neighbours>34 36</neighbours>
-</node>
-
-<node>
-<id>36</id>
-<latitude>51.37918</latitude>
-<longitude>-2.32558</longitude>
-<neighbours>35 37</neighbours>
-</node>
-
-<node>
-<id>37</id>
-<name>Taxi Stop</name>
-<latitude>51.37914</latitude>
-<longitude>-2.32524</longitude>
-<neighbours>36 39</neighbours>
-</node>
-
-<node>
-<id>39</id>
-<name>Bus Stop</name>
-<latitude>51.37887</latitude>
-<longitude>-2.32537</longitude>
-<neighbours>37 40</neighbours>
-</node>
-
-//bus eb junc
-<node>
-<id>40</id>
-<latitude>51.37868</latitude>
-<longitude>-2.32511</longitude>
-<neighbours>39</neighbours>
-</node>
-
-//toward stv
-<node>
-<id>41</id>
-<latitude>51.37856</latitude>
-<longitude>-2.32513</longitude>
-<neighbours>40 42</neighbours>
-</node>
-
-<node>
-<id>42</id>
-<latitude>51.37840</latitude>
-<longitude>-2.32517</longitude>
-<neighbours>41 43</neighbours>
-</node>
-
-<node>
-<id>43</id>
-<latitude>51.37820</latitude>
-<longitude>-2.32522</longitude>
-<neighbours>42 44</neighbours>
-</node>
-
-<node>
-<id>44</id>
-<latitude>51.37803</latitude>
-<longitude>-2.32527</longitude>
-<neighbours>43 45</neighbours>
-</node>
-
-<node>
-<id>45</id>
-<name>Sports T.Village</name>
-<latitude>51.37787</latitude>
-<longitude>-2.32504</longitude>
-<neighbours>44</neighbours>
-</node>
-
-
-
-<node>
-<id>46</id>
-<latitude>51.37864</latitude>
-<longitude>-2.32478</longitude>
-<neighbours>40 47</neighbours>
-</node>
-
-
-<node>
-<id>47</id>
-<name>Arts Lecture Theatre</name>
-<latitude>51.37850</latitude>
-<longitude>-2.32478</longitude>
-<neighbours>46 48</neighbours>
-</node>
-
-<node>
-<id>48</id>
-<latitude>51.37864</latitude>
-<longitude>-2.32472</longitude>
-<neighbours>40 47 49</neighbours>
-</node>
-
-//barn
-<node>
-<id>49</id>
-<name>Arts Barn</name>
-<latitude>51.37868</latitude>
-<longitude>-2.32442</longitude>
-<neighbours>48</neighbours>
-</node>
-
-
-//plot 1
-<node>
-<id>50</id>
-<latitude>51.37876</latitude>
-<longitude>-2.32421</longitude>
-<neighbours>49 51</neighbours>
-</node>
-
-//plot 2
-<node>
-<id>51</id>
-<latitude>51.37881</latitude>
-<longitude>-2.32399</longitude>
-<neighbours>50 52</neighbours>
-</node>
-
-//plot 3
-<node>
-<id>52</id>
-<latitude>51.37886</latitude>
-<longitude>-2.32379</longitude>
-<neighbours>51 53</neighbours>
-</node>
-
-//plot 4
-<node>
-<id>53</id>
-<latitude>51.37892</latitude>
-<longitude>-2.32359</longitude>
-<neighbours>52 54</neighbours>
-</node>
-
-
-//eb
-<node>
-<id>54</id>
-<name>East Building</name>
-<latitude>51.37887</latitude>
-<longitude>-2.32336</longitude>
-<neighbours>53</neighbours>
-</node>
-
-//towards library/su 6w
-51.37932/-2.32617
-<node>
-<id>55</id>
-<latitude>51.37932</latitude>
-<longitude>-2.32617</longitude>
-<neighbours>38 56</neighbours>
-</node>
-
-<node>
-<id>56</id>
-<name>Founders Hall</name>
-<latitude>51.37948</latitude>
-<longitude>-2.32661</longitude>
-<neighbours>55 57 56 58 59</neighbours>
-</node>
-
-<node>
-<id>57</id>
-<name>Plug Bar</name>
-<latitude>51.37946</latitude>
-<longitude>-2.32682</longitude>
-<neighbours>56 57 59 58</neighbours>
-</node>
-
-<node>
-<id>58</id>
-<name>Costa Coffee</name>
-<latitude>51.37949</latitude>
-<longitude>-2.32712</longitude>
-<neighbours>57 56 58 59</neighbours>
-</node>
-
-
-<node>
-<id>59</id>
-<name>4E</name>
-<latitude>51.37943</latitude>
-<longitude>-2.32717</longitude>
-<neighbours>57 58 56  </neighbours>
-</node>
-
-
-<node>
-<id>60</id>
-<latitude>51.37953</latitude>
-<longitude>-2.32755</longitude>
-<neighbours>59 61</neighbours>
-</node>
-
-<node>
-<id>61</id>
-<latitude>51.37957</latitude>
-<longitude>-2.32772</longitude>
-<neighbours>15 13 60 62</neighbours>
-</node>
-
-<node>
-<id>62</id>
-<name>2E</name>
-<latitude>51.37950</latitude>
-<longitude>-2.32779</longitude>
-<neighbours>61 63</neighbours>
-</node>
-
-
-<node>
-<id>63</id>
-<latitude>51.37957</latitude>
-<longitude>-2.32791</longitude>
-<neighbours>62 61 64</neighbours>
-</node>
-
-
-<node>
-<id>64</id>
-<latitude>51.37959</latitude>
-<longitude>-2.32808</longitude>
-<neighbours>15 63 65</neighbours>
-</node>
-
-
- //behind route
-<node>
-<id>65</id>
-<latitude>51.37947</latitude>
-<longitude>-2.32801</longitude>
-<neighbours>64 66</neighbours>
-</node>
-
-//down stairs
-<node>
-<id>66</id>
-<latitude>51.37929</latitude>
-<longitude>-2.32805</longitude>
-<neighbours>65 67</neighbours>
-</node>
-
-<node>
-<id>67</id>
-<latitude>51.37919</latitude>
-<longitude>-2.32815</longitude>
-<neighbours>66 68</neighbours>
-</node>
-
-
-<node>
-<id>68</id>
-<latitude>51.37906</latitude>
-<longitude>-2.32821</longitude>
-<neighbours>67 69</neighbours>
-</node>
-
-<node>
-<id>69</id>
-<latitude>51.37885</latitude>
-<longitude>-2.32814</longitude>
-<neighbours>68 70</neighbours>
-</node>
-
-//campus lake
-
-<node>
-<id>70</id>
-<name>Campus Lake</name>
-<latitude>51.37863</latitude>
-<longitude>-2.32842</longitude>
-<neighbours>69</neighbours>
-</node>
-
-//back
-<node>
-<id>71</id>
-<latitude>51.37878</latitude>
-<longitude>-2.32780</longitude>
-<neighbours>69 70 72</neighbours>
-</node>
-
-<node>
-<id>72</id>
-<latitude>51.37866</latitude>
-<longitude>-2.32716</longitude>
-<neighbours>71 73</neighbours>
-</node>
-
-
-//8e
-<node>
-<id>73</id>
-<name>8E</name>
-<latitude>51.37861</latitude>
-<longitude>-2.32645</longitude>
-<neighbours>72 74</neighbours>
-</node>
-
-<node>
-<id>74</id>
-<latitude>51.37861</latitude>
-<longitude>-2.32599</longitude>
-<neighbours>73 75</neighbours>
-</node>
-
-<node>
-<id>75</id>
-<latitude>51.37872</latitude>
-<longitude>-2.32561</longitude>
-<neighbours>74 39</neighbours>
-</node>
-
-//claverton rooms assos: 65
-<node>
-<id>76</id>
-<latitude>51.37948</latitude>
-<longitude>-2.32821</longitude>
-<neighbours>65 77</neighbours>
-</node>
-
-<node>
-<id>77</id>
-<latitude>51.37931</latitude>
-<longitude>-2.32829</longitude>
-<neighbours>76 78</neighbours>
-</node>
-
-//parade
-<node>
-<id>78</id>
-<name>Parade</name>
-<latitude>51.37919</latitude>
-<longitude>-2.32856</longitude>
-<neighbours>77 79</neighbours>
-</node>
-
-
-<node>
-<id>79</id>
-<latitude>51.37921</latitude>
-<longitude>-2.32833</longitude>
-<neighbours>78 80</neighbours>
-</node>
-
-//away from parade
-<node>
-<id>80</id>
-<latitude>51.37909</latitude>
-<longitude>-2.32846</longitude>
-<neighbours>79 66 67 81</neighbours>
-</node>
-
-//51.37909/-2.32897
-<node>
-<id>81</id>
-<latitude>51.37909</latitude>
-<longitude>-2.32897</longitude>
-<neighbours>80 82</neighbours>
-</node>
-
-//51.37905/-2.32933
-<node>
-<id>82</id>
-<latitude>51.37905</latitude>
-<longitude>-2.32933</longitude>
-<neighbours>81 83</neighbours>
-</node>
-
-<node>
-<id>83</id>
-<latitude>51.37899</latitude>
-<longitude>-2.32948</longitude>
-<neighbours>82 84</neighbours>
-</node>
-
-//6ws
-<node>
-<id>84</id>
-<name>6WS</name>
-<latitude>51.37896</latitude>
-<longitude>-2.32966</longitude>
-<neighbours>83 85</neighbours>
-</node>
-
-<node>
-<id>85</id>
-<latitude>51.37877</latitude>
-<longitude>-2.32965</longitude>
-<neighbours>84 86</neighbours>
-</node>
-
- //towards chemistry
-<node>
-<id>86</id>
-<latitude>51.37869</latitude>
-<longitude>-2.32968</longitude>
-<neighbours>85 87</neighbours>
-</node>
-
-
-<node>
-<id>87</id>
-<latitude>51.37846</latitude>
-<longitude>-2.32957</longitude>
-<neighbours>86 88</neighbours>
-</node>
-
-
-<node>
-<id>88</id>
-<latitude>51.37827</latitude>
-<longitude>-2.32976</longitude>
-<neighbours>87 89</neighbours>
-</node>
-
-
-<node>
-<name>Chemistry</name>
-<id>89</id>
-<latitude>51.37787</latitude>
-<longitude>-2.33020</longitude>
-<neighbours>88 90</neighbours>
-</node>
-
-
-<node>
-<name>Computing Services</name>
-<id>90</id>
-<latitude>51.37753</latitude>
-<longitude>-2.33049</longitude>
-<neighbours>89</neighbours>
-</node>
-
-
-//level 1
-<node>
-<id>91</id>
-<name>Level 1</name>
-<latitude>51.37957</latitude>
-<longitude>-2.32818</longitude>
-<neighbours>64 92 93</neighbours>
-</node>
-
-//claverton rooms
-<node>
-<id>92</id>
-<name>Claverton Rooms</name>
-<latitude>51.37961</latitude>
-<longitude>-2.32846</longitude>
-<neighbours>91 93</neighbours>
-</node>
-
-<node>
-<id>93</id>
-<latitude>51.37964</latitude>
-<longitude>-2.32845</longitude>
-<neighbours>92 95 94</neighbours>
-</node>
-
-//1w
-<node>
-<name>1W</name>
-<id>94</id>
-<latitude>51.37976</latitude>
-<longitude>-2.32858</longitude>
-<neighbours>93 95 </neighbours>
-</node>
-
-
-<node>
-<id>95</id>
-<latitude>51.37966</latitude>
-<longitude>-2.32878</longitude>
-<neighbours>94 96 </neighbours>
-</node>
-
-//student services
-<node>
-<id>96</id>
-<name>Student Services</name>
-<latitude>51.37967</latitude>
-<longitude>-2.32896</longitude>
-<neighbours>95 97</neighbours>
-</node>
-
-
-//Lovelace Physics 3w
-<node>
-<id>97</id>
-<name>Lovelace Lab</name>
-<latitude>51.37986</latitude>
-<longitude>-2.32917</longitude>
-<neighbours>96</neighbours>
-</node>
-
-//4w
-//51.37969/-2.32925
-//4w cafe
-//51.37973/-2.32956
-//wessex rest
-//51.37975/-2.32984
-//fresh
-//51.37989/-2.32974
-
-//east parking lot
-//51.37930/-2.32311
-
+  <node>
+    <id>1</id>
+    <name>CB</name>
+    <latitude>51.37996</latitude>
+    <longitude>-2.32575</longitude>
+    <neighbours>2</neighbours>
+  </node>
+
+  <node>
+    <id>2</id>
+    <latitude>51.37992</latitude>
+    <longitude>-2.32570</longitude>
+    <neighbours>1 3</neighbours>
+  </node>
+
+  <node>
+    <id>3</id>
+    <latitude>51.37987</latitude>
+    <longitude>-2.32571</longitude>
+    <neighbours>2 4</neighbours>
+  </node>
+
+  <node>
+    <id>4</id>
+    <latitude>51.37980</latitude>
+    <longitude>-2.32575</longitude>
+    <neighbours>3 5</neighbours>
+  </node>
+
+  <node>
+    <id>5</id>
+    <latitude>51.37983</latitude>
+    <longitude>-2.32586</longitude>
+    <neighbours>4 6</neighbours>
+  </node>
+
+  <node>
+    <id>6</id>
+    <latitude>51.37992</latitude>
+    <longitude>-2.32613</longitude>
+    <neighbours>5 7</neighbours>
+  </node>
+
+  <node>
+    <id>7</id>
+    <latitude>51.37999</latitude>
+    <longitude>-2.32638</longitude>
+    <neighbours>6 8</neighbours>
+  </node>
+
+  <node>
+    <id>8</id>
+    <latitude>51.37999</latitude>
+    <longitude>-2.32666</longitude>
+    <neighbours>7 9</neighbours>
+  </node>
+
+  <node>
+    <id>9</id>
+    <latitude>51.37998</latitude>
+    <longitude>-2.32696</longitude>
+    <neighbours>8 10</neighbours>
+  </node>
+
+  <node>
+    <id>10</id>
+    <name>3E</name>
+    <latitude>51.38012</latitude>
+    <longitude>-2.32749</longitude>
+    <neighbours>9 11 12</neighbours>
+  </node>
+
+  <node>
+    <id>11</id>
+    <latitude>51.38008</latitude>
+    <longitude>-2.32722</longitude>
+    <neighbours>10 12</neighbours>
+  </node>
+
+  <node>
+    <id>12</id>
+    <latitude>51.38014</latitude>
+    <longitude>-2.32757</longitude>
+    <neighbours>11 13</neighbours>
+  </node>
+
+  <node>
+    <id>13</id>
+    <name>Chaplain</name>
+    <latitude>51.37992</latitude>
+    <longitude>-2.32765</longitude>
+    <neighbours>12 14</neighbours>
+  </node>
+
+  <node>
+    <id>14</id>
+    <latitude>51.37986</latitude>
+    <longitude>-2.32767</longitude>
+    <neighbours>13 15</neighbours>
+  </node>
+
+  <node>
+    <id>15</id>
+    <name>Library</name>
+    <latitude>51.37993</latitude>
+    <longitude>-2.32794</longitude>
+    <neighbours>14 </neighbours>
+  </node>
+
+  <node>
+    <id>16</id>
+    <latitude>51.37974</latitude>
+    <longitude>-2.32572</longitude>
+    <neighbours>4 17</neighbours>
+  </node>
+
+  <node>
+    <id>17</id>
+    <latitude>51.37969</latitude>
+    <longitude>-2.32575</longitude>
+    <neighbours>16 18</neighbours>
+  </node>
+
+  <node>
+    <id>18</id>
+    <latitude>51.37973</latitude>
+    <longitude>-2.32560</longitude>
+    <neighbours>17 19</neighbours>
+  </node>
+
+  <node>
+    <id>19</id>
+    <latitude>51.37976</latitude>
+    <longitude>-2.32543</longitude>
+    <neighbours>18 20</neighbours>
+  </node>
+
+  <node>
+    <id>20</id>
+    <latitude>51.37983</latitude>
+    <longitude>-2.32533</longitude>
+    <neighbours>19 21</neighbours>
+  </node>
+
+  <node>
+    <id>21</id>
+    <latitude>51.37988</latitude>
+    <longitude>-2.32529</longitude>
+    <neighbours>20 22</neighbours>
+  </node>
+
+  <node>
+    <id>22</id>
+    <latitude>51.38005</latitude>
+    <longitude>-2.32505</longitude>
+    <neighbours>21 23</neighbours>
+  </node>
+
+  <node>
+    <id>23</id>
+    <name>Marlborough</name>
+    <latitude>51.38031</latitude>
+    <longitude>-2.32475</longitude>
+    <neighbours>22</neighbours>
+  </node>
+
+  <node>
+    <id>24</id>
+    <latitude>51.37980</latitude>
+    <longitude>-2.32521</longitude>
+    <neighbours>19</neighbours>
+  </node>
+
+  <node>
+    <id>25</id>
+    <latitude>51.37992</latitude>
+    <longitude>-2.32460</longitude>
+    <neighbours>24 26</neighbours>
+  </node>
+
+  <node>
+    <id>26</id>
+    <latitude>51.38009</latitude>
+    <longitude>-2.32393</longitude>
+    <neighbours>25 27</neighbours>
+  </node>
+
+  <node>
+    <id>27</id>
+    <latitude>51.38019</latitude>
+    <longitude>-2.32351</longitude>
+    <neighbours>26 28</neighbours>
+  </node>
+
+  <node>
+    <id>28</id>
+    <latitude>51.38028</latitude>
+    <longitude>-2.32313</longitude>
+    <neighbours>27 29</neighbours>
+  </node>
+
+  <node>
+    <id>29</id>
+    <name>Woodland</name>
+    <latitude>51.38057</latitude>
+    <longitude>-2.32313</longitude>
+    <neighbours>28</neighbours>
+  </node>
+
+  <node>
+    <id>30</id>
+    <latitude>51.37962</latitude>
+    <longitude>-2.32576</longitude>
+    <neighbours>17</neighbours>
+  </node>
+
+  <node>
+    <id>31</id>
+    <latitude>51.37953</latitude>
+    <longitude>-2.32580</longitude>
+    <neighbours>30 32</neighbours>
+  </node>
+
+  <node>
+    <id>32</id>
+    <latitude>51.37942</latitude>
+    <longitude>-2.32583</longitude>
+    <neighbours>31 33</neighbours>
+  </node>
+
+  <node>
+    <id>33</id>
+    <latitude>51.37936</latitude>
+    <longitude>-2.32583</longitude>
+    <neighbours>32 34 38</neighbours>
+  </node>
+
+
+  <node>
+    <name>6E</name>
+    <id>38</id>
+    <latitude>51.37922</latitude>
+    <longitude>-2.32595</longitude>
+    <neighbours>33 34 32 38</neighbours>
+  </node>
+
+  <node>
+    <id>34</id>
+    <latitude>51.37923</latitude>
+    <longitude>-2.32575</longitude>
+    <neighbours>33 35 38</neighbours>
+  </node>
+
+  <node>
+    <id>35</id>
+    <latitude>51.37918</latitude>
+    <longitude>-2.32561</longitude>
+    <neighbours>34 36</neighbours>
+  </node>
+
+  <node>
+    <id>36</id>
+    <latitude>51.37918</latitude>
+    <longitude>-2.32558</longitude>
+    <neighbours>35 37</neighbours>
+  </node>
+
+  <node>
+    <id>37</id>
+    <name>Taxi Stop</name>
+    <latitude>51.37914</latitude>
+    <longitude>-2.32524</longitude>
+    <neighbours>36 39</neighbours>
+  </node>
+
+  <node>
+    <id>39</id>
+    <name>Bus Stop</name>
+    <latitude>51.37887</latitude>
+    <longitude>-2.32537</longitude>
+    <neighbours>37 40</neighbours>
+  </node>
+
+  <node>
+    <id>40</id>
+    <latitude>51.37868</latitude>
+    <longitude>-2.32511</longitude>
+    <neighbours>39</neighbours>
+  </node>
+
+  <node>
+    <id>41</id>
+    <latitude>51.37856</latitude>
+    <longitude>-2.32513</longitude>
+    <neighbours>40 42</neighbours>
+  </node>
+
+  <node>
+    <id>42</id>
+    <latitude>51.37840</latitude>
+    <longitude>-2.32517</longitude>
+    <neighbours>41 43</neighbours>
+  </node>
+
+  <node>
+    <id>43</id>
+    <latitude>51.37820</latitude>
+    <longitude>-2.32522</longitude>
+    <neighbours>42 44</neighbours>
+  </node>
+
+  <node>
+    <id>44</id>
+    <latitude>51.37803</latitude>
+    <longitude>-2.32527</longitude>
+    <neighbours>43 45</neighbours>
+  </node>
+
+  <node>
+    <id>45</id>
+    <name>Sports T.Village</name>
+    <latitude>51.37787</latitude>
+    <longitude>-2.32504</longitude>
+    <neighbours>44</neighbours>
+  </node>
+
+
+
+  <node>
+    <id>46</id>
+    <latitude>51.37864</latitude>
+    <longitude>-2.32478</longitude>
+    <neighbours>40 47</neighbours>
+  </node>
+
+
+  <node>
+    <id>47</id>
+    <name>Arts Lecture Theatre</name>
+    <latitude>51.37850</latitude>
+    <longitude>-2.32478</longitude>
+    <neighbours>46 48</neighbours>
+  </node>
+
+  <node>
+    <id>48</id>
+    <latitude>51.37864</latitude>
+    <longitude>-2.32472</longitude>
+    <neighbours>40 47 49</neighbours>
+  </node>
+
+  <node>
+    <id>49</id>
+    <name>Arts Barn</name>
+    <latitude>51.37868</latitude>
+    <longitude>-2.32442</longitude>
+    <neighbours>48</neighbours>
+  </node>
+
+
+  <node>
+    <id>50</id>
+    <latitude>51.37876</latitude>
+    <longitude>-2.32421</longitude>
+    <neighbours>49 51</neighbours>
+  </node>
+
+  <node>
+    <id>51</id>
+    <latitude>51.37881</latitude>
+    <longitude>-2.32399</longitude>
+    <neighbours>50 52</neighbours>
+  </node>
+
+  <node>
+    <id>52</id>
+    <latitude>51.37886</latitude>
+    <longitude>-2.32379</longitude>
+    <neighbours>51 53</neighbours>
+  </node>
+
+  <node>
+    <id>53</id>
+    <latitude>51.37892</latitude>
+    <longitude>-2.32359</longitude>
+    <neighbours>52 54</neighbours>
+  </node>
+
+
+  <node>
+    <id>54</id>
+    <name>East Building</name>
+    <latitude>51.37887</latitude>
+    <longitude>-2.32336</longitude>
+    <neighbours>53</neighbours>
+  </node>
+
+  51.37932/-2.32617
+  <node>
+    <id>55</id>
+    <latitude>51.37932</latitude>
+    <longitude>-2.32617</longitude>
+    <neighbours>38 56</neighbours>
+  </node>
+
+  <node>
+    <id>56</id>
+    <name>Founders Hall</name>
+    <latitude>51.37948</latitude>
+    <longitude>-2.32661</longitude>
+    <neighbours>55 57 56 58 59</neighbours>
+  </node>
+
+  <node>
+    <id>57</id>
+    <name>Plug Bar</name>
+    <latitude>51.37946</latitude>
+    <longitude>-2.32682</longitude>
+    <neighbours>56 57 59 58</neighbours>
+  </node>
+
+  <node>
+    <id>58</id>
+    <name>Costa Coffee</name>
+    <latitude>51.37949</latitude>
+    <longitude>-2.32712</longitude>
+    <neighbours>57 56 58 59</neighbours>
+  </node>
+
+
+  <node>
+    <id>59</id>
+    <name>4E</name>
+    <latitude>51.37943</latitude>
+    <longitude>-2.32717</longitude>
+    <neighbours>57 58 56  </neighbours>
+  </node>
+
+
+  <node>
+    <id>60</id>
+    <latitude>51.37953</latitude>
+    <longitude>-2.32755</longitude>
+    <neighbours>59 61</neighbours>
+  </node>
+
+  <node>
+    <id>61</id>
+    <latitude>51.37957</latitude>
+    <longitude>-2.32772</longitude>
+    <neighbours>15 13 60 62</neighbours>
+  </node>
+
+  <node>
+    <id>62</id>
+    <name>2E</name>
+    <latitude>51.37950</latitude>
+    <longitude>-2.32779</longitude>
+    <neighbours>61 63</neighbours>
+  </node>
+
+
+  <node>
+    <id>63</id>
+    <latitude>51.37957</latitude>
+    <longitude>-2.32791</longitude>
+    <neighbours>62 61 64</neighbours>
+  </node>
+
+
+  <node>
+    <id>64</id>
+    <latitude>51.37959</latitude>
+    <longitude>-2.32808</longitude>
+    <neighbours>15 63 65</neighbours>
+  </node>
+
+
+
+  <node>
+    <id>65</id>
+    <latitude>51.37947</latitude>
+    <longitude>-2.32801</longitude>
+    <neighbours>64 66</neighbours>
+  </node>
+
+  <node>
+    <id>66</id>
+    <latitude>51.37929</latitude>
+    <longitude>-2.32805</longitude>
+    <neighbours>65 67</neighbours>
+  </node>
+
+  <node>
+    <id>67</id>
+    <latitude>51.37919</latitude>
+    <longitude>-2.32815</longitude>
+    <neighbours>66 68</neighbours>
+  </node>
+
+
+  <node>
+    <id>68</id>
+    <latitude>51.37906</latitude>
+    <longitude>-2.32821</longitude>
+    <neighbours>67 69</neighbours>
+  </node>
+
+  <node>
+    <id>69</id>
+    <latitude>51.37885</latitude>
+    <longitude>-2.32814</longitude>
+    <neighbours>68 70</neighbours>
+  </node>
+
+
+  <node>
+    <id>70</id>
+    <name>Campus Lake</name>
+    <latitude>51.37863</latitude>
+    <longitude>-2.32842</longitude>
+    <neighbours>69</neighbours>
+  </node>
+
+  <node>
+    <id>71</id>
+    <latitude>51.37878</latitude>
+    <longitude>-2.32780</longitude>
+    <neighbours>69 70 72</neighbours>
+  </node>
+
+  <node>
+    <id>72</id>
+    <latitude>51.37866</latitude>
+    <longitude>-2.32716</longitude>
+    <neighbours>71 73</neighbours>
+  </node>
+
+
+  <node>
+    <id>73</id>
+    <name>8E</name>
+    <latitude>51.37861</latitude>
+    <longitude>-2.32645</longitude>
+    <neighbours>72 74</neighbours>
+  </node>
+
+  <node>
+    <id>74</id>
+    <latitude>51.37861</latitude>
+    <longitude>-2.32599</longitude>
+    <neighbours>73 75</neighbours>
+  </node>
+
+  <node>
+    <id>75</id>
+    <latitude>51.37872</latitude>
+    <longitude>-2.32561</longitude>
+    <neighbours>74 39</neighbours>
+  </node>
+
+  <node>
+    <id>76</id>
+    <latitude>51.37948</latitude>
+    <longitude>-2.32821</longitude>
+    <neighbours>65 77</neighbours>
+  </node>
+
+  <node>
+    <id>77</id>
+    <latitude>51.37931</latitude>
+    <longitude>-2.32829</longitude>
+    <neighbours>76 78</neighbours>
+  </node>
+
+  <node>
+    <id>78</id>
+    <name>Parade</name>
+    <latitude>51.37919</latitude>
+    <longitude>-2.32856</longitude>
+    <neighbours>77 79</neighbours>
+  </node>
+
+
+  <node>
+    <id>79</id>
+    <latitude>51.37921</latitude>
+    <longitude>-2.32833</longitude>
+    <neighbours>78 80</neighbours>
+  </node>
+
+  <node>
+    <id>80</id>
+    <latitude>51.37909</latitude>
+    <longitude>-2.32846</longitude>
+    <neighbours>79 66 67 81</neighbours>
+  </node>
+
+  <node>
+    <id>81</id>
+    <latitude>51.37909</latitude>
+    <longitude>-2.32897</longitude>
+    <neighbours>80 82</neighbours>
+  </node>
+
+  <node>
+    <id>82</id>
+    <latitude>51.37905</latitude>
+    <longitude>-2.32933</longitude>
+    <neighbours>81 83</neighbours>
+  </node>
+
+  <node>
+    <id>83</id>
+    <latitude>51.37899</latitude>
+    <longitude>-2.32948</longitude>
+    <neighbours>82 84</neighbours>
+  </node>
+
+  <node>
+    <id>84</id>
+    <name>6WS</name>
+    <latitude>51.37896</latitude>
+    <longitude>-2.32966</longitude>
+    <neighbours>83 85</neighbours>
+  </node>
+
+  <node>
+    <id>85</id>
+    <latitude>51.37877</latitude>
+    <longitude>-2.32965</longitude>
+    <neighbours>84 86</neighbours>
+  </node>
+
+  <node>
+    <id>86</id>
+    <latitude>51.37869</latitude>
+    <longitude>-2.32968</longitude>
+    <neighbours>85 87</neighbours>
+  </node>
+
+
+  <node>
+    <id>87</id>
+    <latitude>51.37846</latitude>
+    <longitude>-2.32957</longitude>
+    <neighbours>86 88</neighbours>
+  </node>
+
+
+  <node>
+    <id>88</id>
+    <latitude>51.37827</latitude>
+    <longitude>-2.32976</longitude>
+    <neighbours>87 89</neighbours>
+  </node>
+
+
+  <node>
+    <name>Chemistry</name>
+    <id>89</id>
+    <latitude>51.37787</latitude>
+    <longitude>-2.33020</longitude>
+    <neighbours>88 90</neighbours>
+  </node>
+
+
+  <node>
+    <name>Computing Services</name>
+    <id>90</id>
+    <latitude>51.37753</latitude>
+    <longitude>-2.33049</longitude>
+    <neighbours>89</neighbours>
+  </node>
+
+
+
+  <node>
+    <id>91</id>
+    <name>Level 1</name>
+    <latitude>51.37957</latitude>
+    <longitude>-2.32818</longitude>
+    <neighbours>64 92 93</neighbours>
+  </node>
+
+  <node>
+    <id>92</id>
+    <name>Claverton Rooms</name>
+    <latitude>51.37961</latitude>
+    <longitude>-2.32846</longitude>
+    <neighbours>91 93</neighbours>
+  </node>
+
+  <node>
+    <id>93</id>
+    <latitude>51.37964</latitude>
+    <longitude>-2.32845</longitude>
+    <neighbours>92 95 94</neighbours>
+  </node>
+
+  <node>
+    <name>1W</name>
+    <id>94</id>
+    <latitude>51.37976</latitude>
+    <longitude>-2.32858</longitude>
+    <neighbours>93 95 </neighbours>
+  </node>
+
+
+  <node>
+    <id>95</id>
+    <latitude>51.37966</latitude>
+    <longitude>-2.32878</longitude>
+    <neighbours>94 96 </neighbours>
+  </node>
+
+  <node>
+    <id>96</id>
+    <name>Student Services</name>
+    <latitude>51.37967</latitude>
+    <longitude>-2.32896</longitude>
+    <neighbours>95 97</neighbours>
+  </node>
+
+  <node>
+    <id>97</id>
+    <name>Lovelace Lab</name>
+    <latitude>51.37986</latitude>
+    <longitude>-2.32917</longitude>
+    <neighbours>96</neighbours>
+  </node>
 </nodes>
