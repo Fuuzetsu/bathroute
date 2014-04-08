@@ -49,7 +49,7 @@ public class PathOverlay extends Overlay {
         public PathOverlay(final int color, final ResourceProxy pResourceProxy) {
                 super(pResourceProxy);
                 this.mPaint.setColor(color);
-                this.mPaint.setStrokeWidth(2.0f);
+                this.mPaint.setStrokeWidth(3.0f);
                 this.mPaint.setStyle(Paint.Style.STROKE);
 
                 this.clearPath();

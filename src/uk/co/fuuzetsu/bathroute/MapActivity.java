@@ -84,8 +84,21 @@ public class MapActivity extends Activity {
 
                 /* Location we should be getting from the GPS system.
                  * Dummy value for now.*/
-                Location start = Utils.makeLocation(-2.327943, 51.379932);
+                Location start = Utils.makeLocation(-2.323366, 51.378877);
+                
+                myLocationoverlay = new MyLocationNewOverlay(this, mapView);
+                myLocationoverlay.enableFollowLocation();
+                myLocationoverlay.enableMyLocation();
 
+                myLocationoverlay.setDrawAccuracyEnabled(false);
+                myLocationoverlay.runOnFirstFix(new Runnable() {
+                        @Override
+                        public void run() {
+                                mapView.getController().animateTo(
+                                                myLocationoverlay.getMyLocation());
+                        }
+                });
+                   
                 NodeManager nm = new NodeManager(nodes);
                 /* Node user chose from the list in PlacesActivity */
                 Option<Node> destinationO = nm.getNodeById(id);
@@ -108,19 +121,7 @@ public class MapActivity extends Activity {
                     }
                 }
 
-                myLocationoverlay = new MyLocationNewOverlay(this, mapView);
-
-                myLocationoverlay.enableFollowLocation();
-                myLocationoverlay.enableMyLocation();
-
-                myLocationoverlay.setDrawAccuracyEnabled(false);
-                myLocationoverlay.runOnFirstFix(new Runnable() {
-                        @Override
-                        public void run() {
-                                mapView.getController().animateTo(
-                                                myLocationoverlay.getMyLocation());
-                        }
-                });
+                
 
                 mapView.getController().setCenter(new GeoPoint(centerLat, centerLong));
 
@@ -146,7 +147,7 @@ public class MapActivity extends Activity {
                 mapView.setTileSource(TileSourceFactory.MAPNIK);
                 mapView.setBuiltInZoomControls(true);
                 mapView.setMultiTouchControls(true);
-                mapView.setMaxZoomLevel(19);
+                mapView.setMaxZoomLevel(18);
                 mapView.getController().setZoom(17);
         }
 
