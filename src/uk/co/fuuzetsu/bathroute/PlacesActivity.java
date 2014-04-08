@@ -31,6 +31,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.osmdroid.util.GeoPoint;
 import org.xmlpull.v1.XmlPullParserException;
 import uk.co.fuuzetsu.bathroute.Engine.CommunicationManager;
 import uk.co.fuuzetsu.bathroute.Engine.Friend;
@@ -44,6 +45,8 @@ public class PlacesActivity extends Fragment {
 
     private AutoCompleteTextView searchField;
 
+
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -132,6 +135,7 @@ public class PlacesActivity extends Fragment {
                                 .getLatitude());
                         i.putExtra("nodeLongitude", m.get(id).getLocation()
                                 .getLongitude());
+                        i.putExtra("nodeID", m.get(id).getId());
                         startActivity(i);
                     } else {
                         searchField.setText("");

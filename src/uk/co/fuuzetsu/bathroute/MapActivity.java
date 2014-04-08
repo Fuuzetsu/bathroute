@@ -50,6 +50,9 @@ public class MapActivity extends Activity {
         private LocationManager myLocationmanger;
         private PathOverlay pOverlay;
 
+        //function (current geopoint, map of nodes) returns shortest
+        
+        
         @Override
         protected void onCreate(Bundle savedInstanceState) {
 
@@ -85,6 +88,7 @@ public class MapActivity extends Activity {
                 /* Location we should be getting from the GPS system.
                  * Dummy value for now.*/
                 Location start = Utils.makeLocation(-2.323366, 51.378877);
+               
                 
                 myLocationoverlay = new MyLocationNewOverlay(this, mapView);
                 myLocationoverlay.enableFollowLocation();
