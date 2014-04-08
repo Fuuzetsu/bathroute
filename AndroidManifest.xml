@@ -56,6 +56,10 @@
             android:name=".MapActivity"
             android:label="Map" >
         </activity>
+        <activity
+            android:name=".EventCreateActivity"
+            android:label="CreateEvent">
+        </activity>
     </application>
 
 </manifest>
