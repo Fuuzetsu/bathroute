@@ -34,6 +34,8 @@ import org.json.JSONObject;
 import org.osmdroid.util.GeoPoint;
 import org.xmlpull.v1.XmlPullParserException;
 import uk.co.fuuzetsu.bathroute.Engine.CommunicationManager;
+import uk.co.fuuzetsu.bathroute.Engine.DataStore;
+import uk.co.fuuzetsu.bathroute.Engine.Event;
 import uk.co.fuuzetsu.bathroute.Engine.Friend;
 import uk.co.fuuzetsu.bathroute.Engine.JSONWriter;
 import uk.co.fuuzetsu.bathroute.Engine.Node;
@@ -85,26 +87,29 @@ public class PlacesActivity extends Fragment {
             values[i] = m.get(i).getName().some();
         }
 
+        
         /* This is just some testing initialisation code, remove it
          * once we hook everything else up. */
         new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        CommunicationManager cm = new CommunicationManager();
-                        cm.listener().start();
-                        cm.write(JSONWriter.announceId(7));
-                        JSONObject ev = JSONWriter.createEvent
-                            (new Friend (2), Utils.makeLocation(3d, -7d), "foobar");
-                        cm.write(ev); cm.write(ev); cm.write(ev);
-                        cm.write(JSONWriter.requestEvents(new Friend(7)));
-                    } catch (IOException e) {
-                        Log.v("PlacesActivity", ExceptionUtils.getStackTrace(e));
-                    } catch (JSONException e) {
-                        Log.v("PlacesActivity", ExceptionUtils.getStackTrace(e));
-                    }
+            @Override
+            public void run() {
+                try {
+                    CommunicationManager cm = new CommunicationManager();
+                    cm.listener().start();
+                    Event e = new Event("Dummy", new Friend(7),
+                            new ArrayList<Friend>(0), Utils.makeLocation(3d,
+                                    -7d));
+                    List<Event> evs = new ArrayList<Event>();
+                    evs.add(e);
+                    evs.add(e);
+                    evs.add(e);
+                    DataStore ds = DataStore.getInstance();
+                    ds.setEvents(evs);
+                } catch (IOException e) {
+                    Log.v("PlacesActivity", ExceptionUtils.getStackTrace(e));
                 }
-            }.start();
+            }
+        }.start();
 
       ArrayAdapter<String> lvadapter = new ArrayAdapter<String>(
                 rootView.getContext(), android.R.layout.simple_list_item_1,
