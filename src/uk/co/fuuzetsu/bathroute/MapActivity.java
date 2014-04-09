@@ -37,6 +37,7 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import fj.data.Option;
+import fj.Unit;
 
 public class MapActivity extends Activity implements MapEventsReceiver {
 
@@ -44,10 +45,11 @@ public class MapActivity extends Activity implements MapEventsReceiver {
     private MyLocationNewOverlay myLocationoverlay;
     private PathOverlay pOverlay;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         initializemap();
         pOverlay = new PathOverlay(Color.BLACK, getApplicationContext());
@@ -80,8 +82,6 @@ public class MapActivity extends Activity implements MapEventsReceiver {
          * Location we should be getting from the GPS system. Dummy value for
          * now.
          */
-        Location start = Utils.makeLocation(-2.323366, 51.378877);
-
         myLocationoverlay = new MyLocationNewOverlay(this, mapView);
         myLocationoverlay.enableFollowLocation();
         myLocationoverlay.enableMyLocation();

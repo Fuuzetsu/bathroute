@@ -10,19 +10,50 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import fj.Unit;
 import java.io.IOException;
 import java.util.List;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import uk.co.fuuzetsu.bathroute.Engine.CommunicationManager;
 
 public class MainActivity
     extends FragmentActivity
     implements ActionBar.TabListener {
 
+    private static Boolean ranOnce = false;
     private ViewPager viewPager;
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
     // Tab titles
     private String[] tabs = { "Places", "Events", "Settings" };
 
+
+    /* We can start things we want to happen early in this thread. This involves things like
+       starting to grab user location. */
+    private static Thread runOnceT() {
+        return new Thread() {
+            @Override
+            public void run() {
+                if (!MainActivity.ranOnce) {
+                    MainActivity.ranOnce = true;
+
+                    /* Start talking to the server */
+                    try {
+                        new CommunicationManager().listener().start();
+                    } catch (IOException e) {
+                        Log.v("MainActivity", ExceptionUtils.getStackTrace(e));
+                    }
+
+                }
+
+            }
+        };
+    }
+
+    public static Unit runOnce() {
+        MainActivity.runOnceT().start();
+        return Unit.unit();
+    }
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
@@ -43,6 +74,7 @@ public class MainActivity
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MainActivity.runOnce();
         setContentView(R.layout.main);
 
         // Initilization

@@ -48,7 +48,7 @@ public class PlacesActivity extends Fragment {
     private AutoCompleteTextView searchField;
 
 
-    
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -87,27 +87,21 @@ public class PlacesActivity extends Fragment {
             values[i] = m.get(i).getName().some();
         }
 
-        
+
         /* This is just some testing initialisation code, remove it
          * once we hook everything else up. */
         new Thread() {
             @Override
             public void run() {
-                try {
-                    CommunicationManager cm = new CommunicationManager();
-                    cm.listener().start();
-                    Event e = new Event("Dummy", new Friend(7),
-                            new ArrayList<Friend>(0), Utils.makeLocation(3d,
-                                    -7d));
-                    List<Event> evs = new ArrayList<Event>();
-                    evs.add(e);
-                    evs.add(e);
-                    evs.add(e);
-                    DataStore ds = DataStore.getInstance();
-                    ds.setEvents(evs);
-                } catch (IOException e) {
-                    Log.v("PlacesActivity", ExceptionUtils.getStackTrace(e));
-                }
+                Event e = new Event("Dummy", new Friend(7),
+                                    new ArrayList<Friend>(0),
+                                    Utils.makeLocation(3d, -7d));
+                List<Event> evs = new ArrayList<Event>();
+                evs.add(e);
+                evs.add(e);
+                evs.add(e);
+                DataStore ds = DataStore.getInstance();
+                ds.setEvents(evs);
             }
         }.start();
 
