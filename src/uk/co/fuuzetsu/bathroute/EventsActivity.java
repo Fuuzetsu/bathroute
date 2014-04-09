@@ -32,7 +32,7 @@ public class EventsActivity extends Fragment {
 
         DataStore ds = DataStore.getInstance();
         List<Event> evs = ds.getEvents();
-        Map<Integer, Event> evm = new HashMap<Integer, Event>();
+        final Map<Integer, Event> evm = new HashMap<Integer, Event>();
         String[] values = new String[evs.size()];
 
         for (Integer i = 0; i < evs.size(); i++) {
@@ -48,6 +48,11 @@ public class EventsActivity extends Fragment {
 
                 public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
                     Intent i = new Intent(rootView.getContext(), EventDetailsActivity.class);
+                    Event ev = evm.get(position);
+                    i.putExtra("latitude", ev.getLocation().getLatitude());
+                    i.putExtra("longitude", ev.getLocation().getLongitude());
+                    i.putExtra("description", ev.getDescription());
+                    i.putExtra("creator", ev.getCreator().getKey());
                     startActivity(i);
                 }
             });
