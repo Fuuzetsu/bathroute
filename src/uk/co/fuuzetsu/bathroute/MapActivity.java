@@ -45,7 +45,6 @@ public class MapActivity extends Activity implements MapEventsReceiver {
     public double centerLat = 51.379932;
     public double centerLong = -2.327943;
     private MyLocationNewOverlay myLocationoverlay;
-    private LocationManager myLocationmanger;
     private PathOverlay pOverlay;
 
     // function (current geopoint, map of nodes) returns shortest
