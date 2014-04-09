@@ -23,6 +23,7 @@ import uk.co.fuuzetsu.bathroute.Engine.Node;
 import uk.co.fuuzetsu.bathroute.Engine.NodeDeserialiser;
 import uk.co.fuuzetsu.bathroute.Engine.NodeManager;
 import uk.co.fuuzetsu.bathroute.Engine.Utils;
+import uk.co.fuuzetsu.bathroute.Engine.DataStore;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -39,15 +40,9 @@ import fj.data.Option;
 
 public class MapActivity extends Activity implements MapEventsReceiver {
 
-    // mapView object
     private MapView mapView;
-    // pre-setting the current Latitude and Longitude at center at the library
-    public double centerLat = 51.379932;
-    public double centerLong = -2.327943;
     private MyLocationNewOverlay myLocationoverlay;
     private PathOverlay pOverlay;
-
-    // function (current geopoint, map of nodes) returns shortest
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +72,8 @@ public class MapActivity extends Activity implements MapEventsReceiver {
         ArrayList<OverlayItem> overlayItemArray = new ArrayList<OverlayItem>();
         Bundle b = getIntent().getExtras();
         String nodeName = b.getString("nodeName");
-        centerLat = b.getDouble("nodeLatitude");
-        centerLong = b.getDouble("nodeLongitude");
+        Double centerLat = b.getDouble("nodeLatitude");
+        Double centerLong = b.getDouble("nodeLongitude");
         Integer id = b.getInt("nodeID");
 
         /*
@@ -92,14 +87,20 @@ public class MapActivity extends Activity implements MapEventsReceiver {
         myLocationoverlay.enableMyLocation();
 
         myLocationoverlay.setDrawAccuracyEnabled(false);
+
         myLocationoverlay.runOnFirstFix(new Runnable() {
             @Override
             public void run() {
-                mapView.getController().animateTo(
-                        myLocationoverlay.getMyLocation());
+                final DataStore ds = DataStore.getInstance();
+                GeoPoint p = myLocationoverlay.getMyLocation();
+                if (p != null) {
+                    mapView.getController().animateTo(p);
+                    ds.setLastGeoPoint(p);
+                }
             }
         });
 
+        DataStore ds = DataStore.getInstance();
         NodeManager nm = new NodeManager(nodes);
         /* Node user chose from the list in PlacesActivity */
         Option<Node> destinationO = nm.getNodeById(id);
@@ -108,9 +109,9 @@ public class MapActivity extends Activity implements MapEventsReceiver {
                     String.format("Can't find user-chosen node ID %d", id));
         } else {
             Node destination = destinationO.some();
-
             Option<List<Node>> p = nm.findPath(start, destination);
-            if (p.isSome()) {
+            if (p.isSome() && ds.getLastGeoPoint().isSome()) {
+                pOverlay.addPoint(ds.getLastGeoPoint().some());
                 for (Integer i = 0; i < p.some().size(); i++) {
                     // adding a point to pOverlay using location from m
                     pOverlay.addPoint(new GeoPoint(p.some().get(i)
@@ -122,15 +123,23 @@ public class MapActivity extends Activity implements MapEventsReceiver {
                         start.toString(), destination.toString()));
             }
         }
+
         mapView.setLongClickable(true);
         MapEventsOverlay evOverlay = new MapEventsOverlay(this, this);
         mapView.getOverlays().add(evOverlay);
 
-        mapView.getController().setCenter(new GeoPoint(centerLat, centerLong));
+        GeoPoint cent;
+        if (ds.getLastGeoPoint().isNone()) {
+            cent = new GeoPoint(centerLat, centerLong);
+        } else {
+            cent = ds.getLastGeoPoint().some();
+        }
+
+        mapView.getController().setCenter(cent);
 
         Marker startMarker = new Marker(mapView);
 
-        startMarker.setPosition(new GeoPoint(centerLat, centerLong));
+        startMarker.setPosition(cent);
         startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
         startMarker.setIcon(getResources().getDrawable(R.drawable.iconmarka));
         startMarker.setAnchor(Marker.ANCHOR_CENTER, 1.0f);

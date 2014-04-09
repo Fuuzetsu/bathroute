@@ -1,10 +1,12 @@
 package uk.co.fuuzetsu.bathroute.Engine;
 
+
 import fj.F;
 import fj.Unit;
 import fj.data.Option;
 import java.util.LinkedList;
 import java.util.List;
+import org.osmdroid.util.GeoPoint;
 import uk.co.fuuzetsu.bathroute.Engine.Event;
 import uk.co.fuuzetsu.bathroute.Engine.Friend;
 
@@ -14,6 +16,7 @@ public class DataStore {
 
     private List<Event> events = new LinkedList<Event>();
     private Option<Friend> ownUser = Option.none();
+    private Option<GeoPoint> lastGeoPoint = Option.none();
 
     private DataStore() { }
 
@@ -42,6 +45,16 @@ public class DataStore {
         this.ownUser = Option.some(u);
         return Unit.unit();
     }
+
+    public synchronized Unit setLastGeoPoint(final GeoPoint l) {
+        this.lastGeoPoint = Option.some(l);
+        return Unit.unit();
+    }
+
+    public synchronized Option<GeoPoint> getLastGeoPoint() {
+        return this.lastGeoPoint;
+    }
+
 
     public Unit modifyUser(F<Option<Friend>, Option<Friend>> f) {
         this.ownUser = f.f(this.ownUser);
