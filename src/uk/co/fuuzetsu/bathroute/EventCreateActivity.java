@@ -62,6 +62,8 @@ public class EventCreateActivity extends Activity {
                               "Failed to send new event to the server.");
                     }
                 }
+
+                finish();
             }
         });
         cancel = (Button) findViewById(R.id.Cancel);
