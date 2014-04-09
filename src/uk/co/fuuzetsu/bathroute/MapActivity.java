@@ -135,22 +135,30 @@ public class MapActivity extends Activity implements MapEventsReceiver {
             cent = ds.getLastGeoPoint().some();
         }
 
-        mapView.getController().setCenter(cent);
+        if (destinationO.isSome()) {
+            GeoPoint d = new GeoPoint(destinationO.some().getLocation());
 
-        Marker startMarker = new Marker(mapView);
+            mapView.getController().setCenter(d);
 
-        startMarker.setPosition(cent);
-        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-        startMarker.setIcon(getResources().getDrawable(R.drawable.iconmarka));
-        startMarker.setAnchor(Marker.ANCHOR_CENTER, 1.0f);
-        InfoWindow infoWindow = new MyInfoWindow(R.layout.popview, mapView,
-                nodeName, "", "");
-        startMarker.setInfoWindow(infoWindow);
-        mapView.getOverlays().add(myLocationoverlay);
-        mapView.getOverlays().add(startMarker);
-        // adding overlay
-        mapView.getOverlays().add(pOverlay);
-        mapView.invalidate();
+            Marker startMarker = new Marker(mapView);
+
+            startMarker.setPosition(d);
+            startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+            startMarker.setIcon(getResources().getDrawable(R.drawable.iconmarka));
+            startMarker.setAnchor(Marker.ANCHOR_CENTER, 1.0f);
+            InfoWindow infoWindow = new MyInfoWindow(R.layout.popview, mapView,
+                                                     nodeName, "", "");
+            startMarker.setInfoWindow(infoWindow);
+            mapView.getOverlays().add(myLocationoverlay);
+            mapView.getOverlays().add(startMarker);
+            // adding overlay
+            mapView.getOverlays().add(pOverlay);
+            mapView.invalidate();
+        } else {
+            Log.w("MapActivity",
+                  "We don't know the destination node, not setting marker.");
+
+        }
 
     }
 
