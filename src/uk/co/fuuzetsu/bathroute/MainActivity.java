@@ -14,8 +14,11 @@ import fj.Unit;
 import java.io.IOException;
 import java.util.List;
 import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.json.JSONException;
 import uk.co.fuuzetsu.bathroute.Engine.CommunicationManager;
 import uk.co.fuuzetsu.bathroute.Engine.DataStore;
+import uk.co.fuuzetsu.bathroute.Engine.Friend;
+import uk.co.fuuzetsu.bathroute.Engine.JSONWriter;
 
 public class MainActivity
     extends FragmentActivity
@@ -45,9 +48,12 @@ public class MainActivity
                         CommunicationManager cm = new CommunicationManager();
                         cm.listener().start();
                         ds.setCommunicationManager(cm);
-
+                        cm.sendMessage(0, JSONWriter.announceId(7));
+                        cm.sendMessage(0, JSONWriter.requestEvents(new Friend(7)));
                     } catch (IOException e) {
-                        Log.v("MainActivity", ExceptionUtils.getStackTrace(e));
+                        Log.e("MainActivity", ExceptionUtils.getStackTrace(e));
+                    } catch (JSONException e) {
+                        Log.e("MainActivity", ExceptionUtils.getStackTrace(e));
                     }
                 }
             }
