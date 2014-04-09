@@ -109,18 +109,23 @@ public class MapActivity extends Activity implements MapEventsReceiver {
                     String.format("Can't find user-chosen node ID %d", id));
         } else {
             Node destination = destinationO.some();
-            Option<List<Node>> p = nm.findPath(start, destination);
-            if (p.isSome() && ds.getLastGeoPoint().isSome()) {
-                pOverlay.addPoint(ds.getLastGeoPoint().some());
-                for (Integer i = 0; i < p.some().size(); i++) {
-                    // adding a point to pOverlay using location from m
-                    pOverlay.addPoint(new GeoPoint(p.some().get(i)
-                            .getLocation()));
+            if (ds.getLastGeoPoint().isSome()) {
+                GeoPoint lastG = ds.getLastGeoPoint().some();
+                Option<List<Node>> p = nm.findPath(lastG, destination);
+
+                if (p.isSome()) {
+                    for (Integer i = 0; i < p.some().size(); i++) {
+                        // adding a point to pOverlay using location from m
+                        pOverlay.addPoint(new GeoPoint(p.some().get(i)
+                                                       .getLocation()));
+                    }
+                } else {
+                    Log.e("MapActivity",
+                          String.format("Couldn't find a path from %s to node %s",
+                                        lastG.toString(), destination.toString()));
                 }
             } else {
-                Log.e("MapActivity", String.format(
-                        "Couldn't find a path from %s to node %s",
-                        start.toString(), destination.toString()));
+                Log.e("MapActivity", "Couldn't get user's location in time.");
             }
         }
 

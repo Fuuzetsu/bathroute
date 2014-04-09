@@ -1,22 +1,23 @@
 package uk.co.fuuzetsu.bathroute.Engine;
 
 import android.location.Location;
-import fj.P;
 import fj.P2;
+import fj.P;
 import fj.data.Option;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
 import java.util.LinkedList;
-import java.util.Collections;
-import org.jgrapht.WeightedGraph;
+import java.util.List;
+import java.util.Map;
 import org.jgrapht.GraphPath;
+import org.jgrapht.WeightedGraph;
 import org.jgrapht.alg.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleWeightedGraph;
+import org.osmdroid.util.GeoPoint;
 
 public class NodeManager {
     private final List<Node> nodes;
@@ -100,6 +101,12 @@ public class NodeManager {
             }
         }
         return closest;
+    }
+
+    public Option<List<Node>> findPath(final GeoPoint l, final Node d) {
+        Double longitude = l.getLongitudeE6() / 1000000d;
+        Double latitude = l.getLatitudeE6() / 1000000d;
+        return findPath(Utils.makeLocation(longitude, latitude), d);
     }
 
     public Option<List<Node>> findPath(final Location l, final Node d) {
