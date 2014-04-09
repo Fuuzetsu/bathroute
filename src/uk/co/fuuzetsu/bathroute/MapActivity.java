@@ -19,17 +19,15 @@ import org.osmdroid.views.overlay.OverlayItem;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 import org.xmlpull.v1.XmlPullParserException;
 
+import uk.co.fuuzetsu.bathroute.Engine.DataStore;
+import uk.co.fuuzetsu.bathroute.Engine.Event;
 import uk.co.fuuzetsu.bathroute.Engine.Node;
 import uk.co.fuuzetsu.bathroute.Engine.NodeDeserialiser;
 import uk.co.fuuzetsu.bathroute.Engine.NodeManager;
-import uk.co.fuuzetsu.bathroute.Engine.Utils;
-import uk.co.fuuzetsu.bathroute.Engine.DataStore;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -37,14 +35,12 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import fj.data.Option;
-import fj.Unit;
 
 public class MapActivity extends Activity implements MapEventsReceiver {
 
     private MapView mapView;
     private MyLocationNewOverlay myLocationoverlay;
     private PathOverlay pOverlay;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,16 +113,31 @@ public class MapActivity extends Activity implements MapEventsReceiver {
                     for (Integer i = 0; i < p.some().size(); i++) {
                         // adding a point to pOverlay using location from m
                         pOverlay.addPoint(new GeoPoint(p.some().get(i)
-                                                       .getLocation()));
+                                .getLocation()));
                     }
                 } else {
-                    Log.e("MapActivity",
-                          String.format("Couldn't find a path from %s to node %s",
-                                        lastG.toString(), destination.toString()));
+                    Log.e("MapActivity", String.format(
+                            "Couldn't find a path from %s to node %s",
+                            lastG.toString(), destination.toString()));
                 }
             } else {
                 Log.e("MapActivity", "Couldn't get user's location in time.");
             }
+        }
+
+        for (Event e : ds.getEvents()) {
+
+            Marker eventMarker = new Marker(mapView);
+
+            eventMarker.setPosition(new GeoPoint(e.getLocation()));
+            eventMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+            eventMarker.setIcon(getResources()
+                    .getDrawable(R.drawable.iconmarka));
+            eventMarker.setAnchor(Marker.ANCHOR_CENTER, 1.0f);
+            InfoWindow infoWindow3 = new MyInfoWindow(R.layout.popview,
+                    mapView, e.getDescription(), "", "");
+            eventMarker.setInfoWindow(infoWindow3);
+            mapView.getOverlays().add(eventMarker);
         }
 
         mapView.setLongClickable(true);
@@ -149,10 +160,11 @@ public class MapActivity extends Activity implements MapEventsReceiver {
 
             startMarker.setPosition(d);
             startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-            startMarker.setIcon(getResources().getDrawable(R.drawable.iconmarka));
+            startMarker.setIcon(getResources()
+                    .getDrawable(R.drawable.iconmarka));
             startMarker.setAnchor(Marker.ANCHOR_CENTER, 1.0f);
             InfoWindow infoWindow = new MyInfoWindow(R.layout.popview, mapView,
-                                                     nodeName, "", "");
+                    nodeName, "", "");
             startMarker.setInfoWindow(infoWindow);
             mapView.getOverlays().add(myLocationoverlay);
             mapView.getOverlays().add(startMarker);
@@ -161,7 +173,7 @@ public class MapActivity extends Activity implements MapEventsReceiver {
             mapView.invalidate();
         } else {
             Log.w("MapActivity",
-                  "We don't know the destination node, not setting marker.");
+                    "We don't know the destination node, not setting marker.");
 
         }
 
@@ -179,7 +191,7 @@ public class MapActivity extends Activity implements MapEventsReceiver {
     @Override
     public boolean longPressHelper(IGeoPoint arg0) {
         Intent i = new Intent(getApplicationContext(),
-                              EventCreateActivity.class);
+                EventCreateActivity.class);
 
         i.putExtra("latitude", arg0.getLatitudeE6() / 1000000d);
         i.putExtra("longitude", arg0.getLongitudeE6() / 1000000d);
