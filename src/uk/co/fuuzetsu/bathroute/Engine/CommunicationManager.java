@@ -23,8 +23,8 @@ import uk.co.fuuzetsu.bathroute.Engine.DataStore;
 
 public class CommunicationManager {
 
-    private static final String HOST = "10.0.2.2";
-    private static final int PORT = 7777;
+    private static final String HOST = "fuuzetsu.co.uk";
+    private static final int PORT = 17777;
     private final Socket s;
     private final DataOutputStream sout;
     private final BufferedReader reader;
