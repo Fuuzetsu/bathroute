@@ -48,11 +48,7 @@ public class MainActivity
                         CommunicationManager cm = new CommunicationManager();
                         cm.listener().start();
                         ds.setCommunicationManager(cm);
-                        cm.sendMessage(0, JSONWriter.announceId(7));
-                        cm.sendMessage(0, JSONWriter.requestEvents(new Friend(7)));
                     } catch (IOException e) {
-                        Log.e("MainActivity", ExceptionUtils.getStackTrace(e));
-                    } catch (JSONException e) {
                         Log.e("MainActivity", ExceptionUtils.getStackTrace(e));
                     }
                 }
