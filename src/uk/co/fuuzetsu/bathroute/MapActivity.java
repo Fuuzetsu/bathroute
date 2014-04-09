@@ -178,9 +178,11 @@ public class MapActivity extends Activity implements MapEventsReceiver {
 
     @Override
     public boolean longPressHelper(IGeoPoint arg0) {
-        Log.v("onclick", "onclick");
         Intent i = new Intent(getApplicationContext(),
-                EventCreateActivity.class);
+                              EventCreateActivity.class);
+
+        i.putExtra("latitude", arg0.getLatitudeE6() / 1000000d);
+        i.putExtra("longitude", arg0.getLongitudeE6() / 1000000d);
         startActivity(i);
 
         return true;

@@ -7,6 +7,7 @@ import fj.data.Option;
 import java.util.LinkedList;
 import java.util.List;
 import org.osmdroid.util.GeoPoint;
+import uk.co.fuuzetsu.bathroute.Engine.CommunicationManager;
 import uk.co.fuuzetsu.bathroute.Engine.Event;
 import uk.co.fuuzetsu.bathroute.Engine.Friend;
 
@@ -17,6 +18,7 @@ public class DataStore {
     private List<Event> events = new LinkedList<Event>();
     private Option<Friend> ownUser = Option.none();
     private Option<GeoPoint> lastGeoPoint = Option.none();
+    private Option<CommunicationManager> cm = Option.none();
 
     private DataStore() { }
 
@@ -26,6 +28,15 @@ public class DataStore {
             DataStore.storeInstance = ds;
         }
         return DataStore.storeInstance;
+    }
+
+    public Unit setCommunicationManager(final CommunicationManager cm) {
+        this.cm = Option.some(cm);
+        return Unit.unit();
+    }
+
+    public Option<CommunicationManager> getCommunicationManager() {
+        return this.cm;
     }
 
     public List<Event> getEvents() {

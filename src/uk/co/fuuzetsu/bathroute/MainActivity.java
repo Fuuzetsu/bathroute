@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.List;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import uk.co.fuuzetsu.bathroute.Engine.CommunicationManager;
+import uk.co.fuuzetsu.bathroute.Engine.DataStore;
 
 public class MainActivity
     extends FragmentActivity
@@ -37,15 +38,18 @@ public class MainActivity
                 if (!MainActivity.ranOnce) {
                     MainActivity.ranOnce = true;
 
+                    DataStore ds = DataStore.getInstance();
+
                     /* Start talking to the server */
                     try {
-                        new CommunicationManager().listener().start();
+                        CommunicationManager cm = new CommunicationManager();
+                        cm.listener().start();
+                        ds.setCommunicationManager(cm);
+
                     } catch (IOException e) {
                         Log.v("MainActivity", ExceptionUtils.getStackTrace(e));
                     }
-
                 }
-
             }
         };
     }
